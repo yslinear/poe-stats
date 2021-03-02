@@ -14,4 +14,11 @@ class PoeController extends Controller
         $res = $client->request('GET', 'https://www.pathofexile.com/api/leagues?realm=pc');
         return $res->getBody()->getContents();
     }
+
+    public function ladders(Request $request, $id)
+    {
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'https://www.pathofexile.com/api/ladders/' . $id);
+        return $res->getBody()->getContents();
+    }
 }

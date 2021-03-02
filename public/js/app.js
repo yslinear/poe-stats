@@ -1897,10 +1897,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      leagues: []
+      leagues: [],
+      ladders: []
     };
   },
   mounted: function mounted() {
@@ -1910,7 +1939,16 @@ __webpack_require__.r(__webpack_exports__);
       _this.leagues = res.data;
     });
   },
-  methods: {}
+  methods: {
+    updateLadders: function updateLadders(league) {
+      var _this2 = this;
+
+      console.log(league);
+      axios.get("/api/v1/poe/ladders/".concat(league)).then(function (res) {
+        _this2.ladders = res.data;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -37593,27 +37631,83 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
+    _c("div", { staticClass: "row" }, [
       _c(
-        "nav",
-        { staticClass: "nav" },
-        _vm._l(_vm.leagues, function(item, index) {
+        "div",
+        { staticClass: "col-12" },
+        _vm._l(_vm.leagues, function(league, index) {
           return _c(
-            "a",
+            "button",
             {
               key: index,
-              staticClass: "nav-link hover:shadow-md",
-              attrs: { href: "#" }
+              staticClass: "btn btn-dark mr-1 mb-3 hover:shadow",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.updateLadders(league.id)
+                }
+              }
             },
-            [_vm._v("\n                " + _vm._s(item.id) + "\n            ")]
+            [
+              _vm._v(
+                "\n                " + _vm._s(league.id) + "\n            "
+              )
+            ]
           )
         }),
         0
-      )
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12 overflow-scroll" }, [
+        _c("table", { staticClass: "table" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.ladders.entries, function(ladder, index) {
+              return _c("tr", { key: index }, [
+                _c("td", [_vm._v(_vm._s(ladder.rank))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ladder.character.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ladder.account.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ladder.character.level))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ladder.character.class))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(ladder.online))])
+              ])
+            }),
+            0
+          )
+        ])
+      ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Character")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Account")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Class")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Online")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

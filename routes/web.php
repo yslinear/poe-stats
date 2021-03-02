@@ -21,6 +21,7 @@ Route::prefix('api')->group(function () {
     Route::prefix('v1')->group(function () {
         Route::prefix('poe')->group(function () {
             Route::get('leagues', [App\Http\Controllers\api\PoeController::class, 'leagues']);
+            Route::get('ladders/{id}', [App\Http\Controllers\api\PoeController::class, 'ladders']);
         });
     });
 });
