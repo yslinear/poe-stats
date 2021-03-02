@@ -1925,6 +1925,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -37676,7 +37685,12 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(ladder.character.class))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(ladder.online))])
+                _c("td", [
+                  _c("i", {
+                    staticClass: "fas fa-signal",
+                    class: [ladder.online ? "text-green-500" : "text-red-500"]
+                  })
+                ])
               ])
             }),
             0
@@ -37703,7 +37717,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Class")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Online")])
+        _c("th", { attrs: { scope: "col" } })
       ])
     ])
   }

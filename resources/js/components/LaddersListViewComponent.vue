@@ -21,7 +21,7 @@
                             <th scope="col">Account</th>
                             <th scope="col">Level</th>
                             <th scope="col">Class</th>
-                            <th scope="col">Online</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,7 +34,16 @@
                             <td>{{ ladder.account.name }}</td>
                             <td>{{ ladder.character.level }}</td>
                             <td>{{ ladder.character.class }}</td>
-                            <td>{{ ladder.online }}</td>
+                            <td>
+                                <i
+                                    class="fas fa-signal"
+                                    v-bind:class="[
+                                        ladder.online
+                                            ? 'text-green-500'
+                                            : 'text-red-500',
+                                    ]"
+                                ></i>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
