@@ -17,6 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('api')->group(function () {
+    Route::prefix('v1')->group(function () {
+        Route::prefix('poe')->group(function () {
+            Route::get('leagues', [App\Http\Controllers\api\PoeController::class, 'leagues']);
+        });
+    });
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/ladders', [App\Http\Controllers\LaddersController::class, 'index'])->name('ladders');
