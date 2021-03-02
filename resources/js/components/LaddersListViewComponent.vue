@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <nav class="nav">
                 <a
-                    class="nav-link"
+                    class="nav-link hover:shadow-md"
                     href="#"
                     v-for="(item, index) in leagues"
                     :key="index"

@@ -34546,6 +34546,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/css/app.css":
+/*!*******************************!*\
+  !*** ./resources/css/app.css ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./node_modules/popper.js/dist/esm/popper.js":
 /*!***************************************************!*\
   !*** ./node_modules/popper.js/dist/esm/popper.js ***!
@@ -37587,7 +37600,11 @@ var render = function() {
         _vm._l(_vm.leagues, function(item, index) {
           return _c(
             "a",
-            { key: index, staticClass: "nav-link", attrs: { href: "#" } },
+            {
+              key: index,
+              staticClass: "nav-link hover:shadow-md",
+              attrs: { href: "#" }
+            },
             [_vm._v("\n                " + _vm._s(item.id) + "\n            ")]
           )
         }),
@@ -49808,7 +49825,8 @@ Vue.compile = compileToFunctions;
 /******/ 		
 /******/ 		var deferredModules = [
 /******/ 			["./resources/js/app.js"],
-/******/ 			["./resources/sass/app.scss"]
+/******/ 			["./resources/sass/app.scss"],
+/******/ 			["./resources/css/app.css"]
 /******/ 		];
 /******/ 		// no chunk on demand loading
 /******/ 		
