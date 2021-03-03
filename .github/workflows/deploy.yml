@@ -1,9 +1,13 @@
-on: push
 name: 🚀 Deploy website on push
+
+on: push
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
+
     runs-on: ubuntu-latest
+
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2.3.2
@@ -14,3 +18,4 @@ jobs:
         server: ${{ secrets.SERVER }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
+        server-dir: ${{ secrets.SERVER_DIR }}
