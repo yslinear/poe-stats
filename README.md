@@ -5,7 +5,8 @@
 ## Technology stack
 
 - [Laravel](https://laravel.com/)
-- [Vue.js](https://vuejs.org/)
 - [axios](https://github.com/axios/axios/)
+- [Vue.js](https://vuejs.org/)
+- [Vuetify](https://vuetifyjs.com/)
 - [Bootstrap](https://getbootstrap.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
