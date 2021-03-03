@@ -18,9 +18,8 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Character</th>
-                            <th scope="col">Account</th>
                             <th scope="col">Level</th>
-                            <th scope="col">Class</th>
+                            <th scope="col">Account</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -30,14 +29,39 @@
                             :key="index"
                         >
                             <td>{{ ladder.rank }}</td>
-                            <td>{{ ladder.character.name }}</td>
-                            <td>{{ ladder.account.name }}</td>
+                            <td>
+                                <div>
+                                    {{ ladder.character.name }}
+                                </div>
+                                <div class="text-gray-500 text-xs">
+                                    {{ ladder.character.class }}
+                                </div>
+                            </td>
                             <td>{{ ladder.character.level }}</td>
-                            <td>{{ ladder.character.class }}</td>
+                            <td>
+                                <div class="flex">
+                                    <div>{{ ladder.account.name }}</div>
+                                    <div v-if="ladder.public" class="ml-2">
+                                        <a
+                                            class="far fa-id-card text-yellow-900"
+                                            :href="`https://www.pathofexile.com/account/view-profile/${ladder.account.name}/characters`"
+                                        ></a>
+                                    </div>
+                                    <div
+                                        v-if="ladder.account.twitch"
+                                        class="ml-2"
+                                    >
+                                        <a
+                                            class="fab fa-twitch text-purple-700"
+                                            :href="`https://www.twitch.tv/${ladder.account.twitch.name}`"
+                                        ></a>
+                                    </div>
+                                </div>
+                            </td>
                             <td>
                                 <i
                                     class="fas fa-signal"
-                                    v-bind:class="[
+                                    :class="[
                                         ladder.online
                                             ? 'text-green-500'
                                             : 'text-red-500',

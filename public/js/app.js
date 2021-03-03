@@ -1934,6 +1934,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -37677,13 +37701,58 @@ var render = function() {
               return _c("tr", { key: index }, [
                 _c("td", [_vm._v(_vm._s(ladder.rank))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(ladder.character.name))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(ladder.account.name))]),
+                _c("td", [
+                  _c("div", [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(ladder.character.name) +
+                        "\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-gray-500 text-xs" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(ladder.character.class) +
+                        "\n                            "
+                    )
+                  ])
+                ]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(ladder.character.level))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(ladder.character.class))]),
+                _c("td", [
+                  _c("div", { staticClass: "flex" }, [
+                    _c("div", [_vm._v(_vm._s(ladder.account.name))]),
+                    _vm._v(" "),
+                    ladder.public
+                      ? _c("div", { staticClass: "ml-2" }, [
+                          _c("a", {
+                            staticClass: "far fa-id-card text-yellow-900",
+                            attrs: {
+                              href:
+                                "https://www.pathofexile.com/account/view-profile/" +
+                                ladder.account.name +
+                                "/characters"
+                            }
+                          })
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    ladder.account.twitch
+                      ? _c("div", { staticClass: "ml-2" }, [
+                          _c("a", {
+                            staticClass: "fab fa-twitch text-purple-700",
+                            attrs: {
+                              href:
+                                "https://www.twitch.tv/" +
+                                ladder.account.twitch.name
+                            }
+                          })
+                        ])
+                      : _vm._e()
+                  ])
+                ]),
                 _vm._v(" "),
                 _c("td", [
                   _c("i", {
@@ -37711,11 +37780,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Character")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Account")]),
-        _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Level")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Class")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Account")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } })
       ])
