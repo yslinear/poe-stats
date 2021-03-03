@@ -2,7 +2,7 @@ name: Laravel
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, chore-github-actions ]
   pull_request:
     branches: [ master ]
 
