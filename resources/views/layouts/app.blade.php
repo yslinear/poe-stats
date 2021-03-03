@@ -81,9 +81,11 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 min-h-screen">
             @yield('content')
         </main>
+
+        <footer-component></footer-component>
     </div>
 </body>
 
