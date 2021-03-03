@@ -2,19 +2,16 @@ name: Laravel
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, chore-github-actions ]
   pull_request:
     branches: [ master ]
 
 jobs:
-  laravel-tests-and-deploy:
+  laravel-tests:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: shivammathur/setup-php@b7d1d9c9a92d8d8463ce36d7f60da34d461724f8
-      with:
-        php-version: '8.0'
     - uses: actions/checkout@v2
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
@@ -34,6 +31,32 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
 
+
+  build:
+    needs: laravel-tests
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+          check-latest: true
+      - name: Install NPM dependencies
+        run: npm install
+      - name: Compile assets for production
+        run: npm run production
+
+
+  deploy:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Get latest code
       uses: actions/checkout@v2.3.2
 
@@ -44,4 +67,3 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         server-dir: ${{ secrets.SERVER_DIR }}
-        exclude: ~
