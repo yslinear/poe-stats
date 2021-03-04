@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <v-container>
         <div class="row">
             <div class="col-12">
                 <v-select
@@ -40,39 +40,52 @@
                             <td>
                                 <div class="flex">
                                     <div>{{ ladder.account.name }}</div>
-                                    <div v-if="ladder.public" class="ml-2">
-                                        <a
-                                            class="far fa-id-card text-yellow-900"
-                                            :href="`https://www.pathofexile.com/account/view-profile/${ladder.account.name}/characters`"
-                                        ></a>
-                                    </div>
-                                    <div
-                                        v-if="ladder.account.twitch"
-                                        class="ml-2"
+                                    <a
+                                        v-if="ladder.public"
+                                        class="ml-2 no-underline"
+                                        :href="`https://www.pathofexile.com/account/view-profile/${ladder.account.name}/characters`"
+                                        target="_blank"
                                     >
-                                        <a
-                                            class="fab fa-twitch text-purple-700"
-                                            :href="`https://www.twitch.tv/${ladder.account.twitch.name}`"
-                                        ></a>
-                                    </div>
+                                        <v-icon dense class="text-yellow-800"
+                                            >mdi-card-account-details-outline</v-icon
+                                        >
+                                    </a>
+                                    <a
+                                        v-if="ladder.account.twitch"
+                                        class="ml-2 no-underline"
+                                        :href="`https://www.twitch.tv/${ladder.account.twitch.name}`"
+                                        target="_blank"
+                                    >
+                                        <v-icon dense class="text-purple-700"
+                                            >mdi-twitch</v-icon
+                                        >
+                                    </a>
                                 </div>
                             </td>
                             <td>
-                                <i
-                                    class="fas fa-signal"
+                                <v-icon
+                                    dense
                                     :class="[
                                         ladder.online
                                             ? 'text-green-500'
                                             : 'text-red-500',
                                     ]"
-                                ></i>
+                                    >mdi-access-point</v-icon
+                                >
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <div class="col-12" v-show="0 !== paginationLength">
+                <v-pagination
+                    class="my-4"
+                    v-model="select.page"
+                    :length="paginationLength"
+                ></v-pagination>
+            </div>
         </div>
-    </div>
+    </v-container>
 </template>
 
 <script>
@@ -83,6 +96,7 @@ export default {
             ladders: [],
             select: {
                 league: null,
+                page: null,
             },
         };
     },
@@ -91,13 +105,19 @@ export default {
             this.leagues = res.data;
         });
     },
-    computed: {},
+    computed: {
+        paginationLength: function () {
+            if (undefined != this.ladders.total) return this.ladders.total / 20;
+            return 0;
+        },
+    },
     watch: {
         "select.league": function () {
             axios
                 .get(`/api/v1/poe/ladders/${this.select.league}`)
                 .then((res) => {
                     this.ladders = res.data;
+                    this.select.page = 1;
                 });
         },
     },

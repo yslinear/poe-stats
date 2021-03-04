@@ -23,7 +23,6 @@ import vuetify from './vuetify';
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('ladders-list-view-component', require('./components/LaddersListViewComponent.vue').default);
-Vue.component('footer-component', require('./components/FooterComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,6 +31,6 @@ Vue.component('footer-component', require('./components/FooterComponent.vue').de
  */
 
 const app = new Vue({
-    el: '#app',
+    el: '#vue-app',
     vuetify,
 });

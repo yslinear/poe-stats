@@ -1957,13 +1957,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       leagues: [],
       ladders: [],
       select: {
-        league: null
+        league: null,
+        page: null
       }
     };
   },
@@ -1974,13 +1988,19 @@ __webpack_require__.r(__webpack_exports__);
       _this.leagues = res.data;
     });
   },
-  computed: {},
+  computed: {
+    paginationLength: function paginationLength() {
+      if (undefined != this.ladders.total) return this.ladders.total / 20;
+      return 0;
+    }
+  },
   watch: {
     "select.league": function selectLeague() {
       var _this2 = this;
 
       axios.get("/api/v1/poe/ladders/".concat(this.select.league)).then(function (res) {
         _this2.ladders = res.data;
+        _this2.select.page = 1;
       });
     }
   },
@@ -2019,7 +2039,6 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
 Vue.component('ladders-list-view-component', __webpack_require__(/*! ./components/LaddersListViewComponent.vue */ "./resources/js/components/LaddersListViewComponent.vue").default);
-Vue.component('footer-component', __webpack_require__(/*! ./components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -2027,7 +2046,7 @@ Vue.component('footer-component', __webpack_require__(/*! ./components/FooterCom
  */
 
 var app = new Vue({
-  el: '#app',
+  el: '#vue-app',
   vuetify: _vuetify__WEBPACK_IMPORTED_MODULE_0__.default
 });
 
@@ -37935,43 +37954,6 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/FooterComponent.vue":
-/*!*****************************************************!*\
-  !*** ./resources/js/components/FooterComponent.vue ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _FooterComponent_vue_vue_type_template_id_abfbddf2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FooterComponent.vue?vue&type=template&id=abfbddf2& */ "./resources/js/components/FooterComponent.vue?vue&type=template&id=abfbddf2&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-var script = {}
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__.default)(
-  script,
-  _FooterComponent_vue_vue_type_template_id_abfbddf2___WEBPACK_IMPORTED_MODULE_0__.render,
-  _FooterComponent_vue_vue_type_template_id_abfbddf2___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/FooterComponent.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/js/components/LaddersListViewComponent.vue":
 /*!**************************************************************!*\
   !*** ./resources/js/components/LaddersListViewComponent.vue ***!
@@ -38060,23 +38042,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/FooterComponent.vue?vue&type=template&id=abfbddf2&":
-/*!************************************************************************************!*\
-  !*** ./resources/js/components/FooterComponent.vue?vue&type=template&id=abfbddf2& ***!
-  \************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FooterComponent_vue_vue_type_template_id_abfbddf2___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FooterComponent_vue_vue_type_template_id_abfbddf2___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FooterComponent_vue_vue_type_template_id_abfbddf2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FooterComponent.vue?vue&type=template&id=abfbddf2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FooterComponent.vue?vue&type=template&id=abfbddf2&");
-
-
-/***/ }),
-
 /***/ "./resources/js/components/LaddersListViewComponent.vue?vue&type=template&id=f2231b98&":
 /*!*********************************************************************************************!*\
   !*** ./resources/js/components/LaddersListViewComponent.vue?vue&type=template&id=f2231b98& ***!
@@ -38142,43 +38107,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FooterComponent.vue?vue&type=template&id=abfbddf2&":
-/*!***************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FooterComponent.vue?vue&type=template&id=abfbddf2& ***!
-  \***************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "v-footer",
-    { attrs: { padless: "" } },
-    [
-      _c("v-col", { staticClass: "text-center", attrs: { cols: "12" } }, [
-        _c("a", {
-          staticClass: "fab fa-github",
-          attrs: { href: "https://github.com/yslinear/" }
-        })
-      ])
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/LaddersListViewComponent.vue?vue&type=template&id=f2231b98&":
 /*!************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/LaddersListViewComponent.vue?vue&type=template&id=f2231b98& ***!
@@ -38195,7 +38123,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("v-container", [
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
@@ -38223,7 +38151,19 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-12 overflow-scroll" }, [
         _c("table", { staticClass: "table" }, [
-          _vm._m(0),
+          _c("thead", [
+            _c("tr", [
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Character")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Level")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Account")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } })
+            ])
+          ]),
           _vm._v(" "),
           _c(
             "tbody",
@@ -38256,69 +38196,115 @@ var render = function() {
                     _c("div", [_vm._v(_vm._s(ladder.account.name))]),
                     _vm._v(" "),
                     ladder.public
-                      ? _c("div", { staticClass: "ml-2" }, [
-                          _c("a", {
-                            staticClass: "far fa-id-card text-yellow-900",
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "ml-2 no-underline",
                             attrs: {
                               href:
                                 "https://www.pathofexile.com/account/view-profile/" +
                                 ladder.account.name +
-                                "/characters"
+                                "/characters",
+                              target: "_blank"
                             }
-                          })
-                        ])
+                          },
+                          [
+                            _c(
+                              "v-icon",
+                              {
+                                staticClass: "text-yellow-800",
+                                attrs: { dense: "" }
+                              },
+                              [_vm._v("mdi-card-account-details-outline")]
+                            )
+                          ],
+                          1
+                        )
                       : _vm._e(),
                     _vm._v(" "),
                     ladder.account.twitch
-                      ? _c("div", { staticClass: "ml-2" }, [
-                          _c("a", {
-                            staticClass: "fab fa-twitch text-purple-700",
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "ml-2 no-underline",
                             attrs: {
                               href:
                                 "https://www.twitch.tv/" +
-                                ladder.account.twitch.name
+                                ladder.account.twitch.name,
+                              target: "_blank"
                             }
-                          })
-                        ])
+                          },
+                          [
+                            _c(
+                              "v-icon",
+                              {
+                                staticClass: "text-purple-700",
+                                attrs: { dense: "" }
+                              },
+                              [_vm._v("mdi-twitch")]
+                            )
+                          ],
+                          1
+                        )
                       : _vm._e()
                   ])
                 ]),
                 _vm._v(" "),
-                _c("td", [
-                  _c("i", {
-                    staticClass: "fas fa-signal",
-                    class: [ladder.online ? "text-green-500" : "text-red-500"]
-                  })
-                ])
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "v-icon",
+                      {
+                        class: [
+                          ladder.online ? "text-green-500" : "text-red-500"
+                        ],
+                        attrs: { dense: "" }
+                      },
+                      [_vm._v("mdi-access-point")]
+                    )
+                  ],
+                  1
+                )
               ])
             }),
             0
           )
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: 0 !== _vm.paginationLength,
+              expression: "0 !== paginationLength"
+            }
+          ],
+          staticClass: "col-12"
+        },
+        [
+          _c("v-pagination", {
+            staticClass: "my-4",
+            attrs: { length: _vm.paginationLength },
+            model: {
+              value: _vm.select.page,
+              callback: function($$v) {
+                _vm.$set(_vm.select, "page", $$v)
+              },
+              expression: "select.page"
+            }
+          })
+        ],
+        1
+      )
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Character")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Level")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Account")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
