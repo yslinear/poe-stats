@@ -1977,7 +1977,7 @@ __webpack_require__.r(__webpack_exports__);
       ladders: [],
       select: {
         league: null,
-        page: null
+        page: 1
       }
     };
   },
@@ -1995,13 +1995,19 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
-    "select.league": function selectLeague() {
-      var _this2 = this;
+    select: {
+      handler: function handler() {
+        var _this2 = this;
 
-      axios.get("/api/v1/poe/ladders/".concat(this.select.league)).then(function (res) {
-        _this2.ladders = res.data;
-        _this2.select.page = 1;
-      });
+        axios.get("/api/v1/poe/ladders/".concat(this.select.league), {
+          params: {
+            offset: (this.select.page - 1) * 20
+          }
+        }).then(function (res) {
+          _this2.ladders = res.data;
+        });
+      },
+      deep: true
     }
   },
   methods: {}
@@ -38137,6 +38143,11 @@ var render = function() {
               label: "League",
               "single-line": ""
             },
+            on: {
+              change: function($event) {
+                _vm.select.page = 1
+              }
+            },
             model: {
               value: _vm.select.league,
               callback: function($$v) {
@@ -38159,9 +38170,7 @@ var render = function() {
               _vm._v(" "),
               _c("th", { attrs: { scope: "col" } }, [_vm._v("Level")]),
               _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Account")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } })
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Account")])
             ])
           ]),
           _vm._v(" "),
@@ -38192,80 +38201,85 @@ var render = function() {
                 _c("td", [_vm._v(_vm._s(ladder.character.level))]),
                 _vm._v(" "),
                 _c("td", [
-                  _c("div", { staticClass: "flex" }, [
-                    _c("div", [_vm._v(_vm._s(ladder.account.name))]),
-                    _vm._v(" "),
-                    ladder.public
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "ml-2 no-underline",
-                            attrs: {
-                              href:
-                                "https://www.pathofexile.com/account/view-profile/" +
-                                ladder.account.name +
-                                "/characters",
-                              target: "_blank"
-                            }
-                          },
-                          [
-                            _c(
-                              "v-icon",
-                              {
-                                staticClass: "text-yellow-800",
-                                attrs: { dense: "" }
-                              },
-                              [_vm._v("mdi-card-account-details-outline")]
-                            )
+                  _c(
+                    "div",
+                    { staticClass: "flex" },
+                    [
+                      _c(
+                        "v-icon",
+                        {
+                          class: [
+                            ladder.online ? "text-green-500" : "text-red-500"
                           ],
-                          1
+                          attrs: { dense: "" }
+                        },
+                        [_vm._v("mdi-access-point")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ml-2" }, [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(ladder.account.name) +
+                            "\n                                "
                         )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    ladder.account.twitch
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "ml-2 no-underline",
-                            attrs: {
-                              href:
-                                "https://www.twitch.tv/" +
-                                ladder.account.twitch.name,
-                              target: "_blank"
-                            }
-                          },
-                          [
-                            _c(
-                              "v-icon",
-                              {
-                                staticClass: "text-purple-700",
-                                attrs: { dense: "" }
-                              },
-                              [_vm._v("mdi-twitch")]
-                            )
-                          ],
-                          1
-                        )
-                      : _vm._e()
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  [
-                    _c(
-                      "v-icon",
-                      {
-                        class: [
-                          ladder.online ? "text-green-500" : "text-red-500"
-                        ],
-                        attrs: { dense: "" }
-                      },
-                      [_vm._v("mdi-access-point")]
-                    )
-                  ],
-                  1
-                )
+                      ]),
+                      _vm._v(" "),
+                      ladder.public
+                        ? _c(
+                            "a",
+                            {
+                              staticClass: "ml-2 no-underline",
+                              attrs: {
+                                href:
+                                  "https://www.pathofexile.com/account/view-profile/" +
+                                  ladder.account.name +
+                                  "/characters",
+                                target: "_blank"
+                              }
+                            },
+                            [
+                              _c(
+                                "v-icon",
+                                {
+                                  staticClass: "text-yellow-800",
+                                  attrs: { dense: "" }
+                                },
+                                [_vm._v("mdi-card-account-details-outline")]
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      ladder.account.twitch
+                        ? _c(
+                            "a",
+                            {
+                              staticClass: "ml-2 no-underline",
+                              attrs: {
+                                href:
+                                  "https://www.twitch.tv/" +
+                                  ladder.account.twitch.name,
+                                target: "_blank"
+                              }
+                            },
+                            [
+                              _c(
+                                "v-icon",
+                                {
+                                  staticClass: "text-purple-700",
+                                  attrs: { dense: "" }
+                                },
+                                [_vm._v("mdi-twitch")]
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ])
               ])
             }),
             0
@@ -38280,8 +38294,8 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: 0 !== _vm.paginationLength,
-              expression: "0 !== paginationLength"
+              value: 0 < _vm.paginationLength,
+              expression: "0 < paginationLength"
             }
           ],
           staticClass: "col-12"

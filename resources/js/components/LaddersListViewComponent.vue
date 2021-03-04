@@ -5,6 +5,7 @@
                 <v-select
                     v-model="select.league"
                     :items="leagues"
+                    v-on:change="select.page = 1"
                     item-text="id"
                     item-value="id"
                     label="League"
@@ -19,7 +20,6 @@
                             <th scope="col">Character</th>
                             <th scope="col">Level</th>
                             <th scope="col">Account</th>
-                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,7 +39,18 @@
                             <td>{{ ladder.character.level }}</td>
                             <td>
                                 <div class="flex">
-                                    <div>{{ ladder.account.name }}</div>
+                                    <v-icon
+                                        dense
+                                        :class="[
+                                            ladder.online
+                                                ? 'text-green-500'
+                                                : 'text-red-500',
+                                        ]"
+                                        >mdi-access-point</v-icon
+                                    >
+                                    <div class="ml-2">
+                                        {{ ladder.account.name }}
+                                    </div>
                                     <a
                                         v-if="ladder.public"
                                         class="ml-2 no-underline"
@@ -62,22 +73,11 @@
                                     </a>
                                 </div>
                             </td>
-                            <td>
-                                <v-icon
-                                    dense
-                                    :class="[
-                                        ladder.online
-                                            ? 'text-green-500'
-                                            : 'text-red-500',
-                                    ]"
-                                    >mdi-access-point</v-icon
-                                >
-                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="col-12" v-show="0 !== paginationLength">
+            <div class="col-12" v-show="0 < paginationLength">
                 <v-pagination
                     class="my-4"
                     v-model="select.page"
@@ -96,7 +96,7 @@ export default {
             ladders: [],
             select: {
                 league: null,
-                page: null,
+                page: 1,
             },
         };
     },
@@ -112,13 +112,19 @@ export default {
         },
     },
     watch: {
-        "select.league": function () {
-            axios
-                .get(`/api/v1/poe/ladders/${this.select.league}`)
-                .then((res) => {
-                    this.ladders = res.data;
-                    this.select.page = 1;
-                });
+        select: {
+            handler: function () {
+                axios
+                    .get(`/api/v1/poe/ladders/${this.select.league}`, {
+                        params: {
+                            offset: (this.select.page - 1) * 20,
+                        },
+                    })
+                    .then((res) => {
+                        this.ladders = res.data;
+                    });
+            },
+            deep: true,
         },
     },
     methods: {},

@@ -18,7 +18,9 @@ class PoeController extends Controller
     public function ladders(Request $request, $id)
     {
         $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', 'https://www.pathofexile.com/api/ladders/' . $id);
+        $res = $client->request('GET', 'https://www.pathofexile.com/api/ladders/' . $id, [
+            'query' => $request->all()
+        ]);
         return $res->getBody()->getContents();
     }
 }
