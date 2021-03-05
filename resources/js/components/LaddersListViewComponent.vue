@@ -1,6 +1,7 @@
 <template>
     <v-container>
         <div class="row">
+            <div class="col-12"></div>
             <div class="col-12">
                 <v-select
                     v-model="select.league"
@@ -9,11 +10,17 @@
                     item-text="id"
                     item-value="id"
                     label="League"
+                    :loading="isLoading"
+                    :disabled="isLoading"
                     single-line
                 ></v-select>
             </div>
-            <div class="col-12 overflow-scroll">
-                <table class="table">
+            <div class="col-12">
+                <v-skeleton-loader
+                    type="table-heading, table-row-divider@20"
+                    v-show="isLoading"
+                ></v-skeleton-loader>
+                <v-simple-table v-show="!isLoading">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -75,13 +82,15 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                </v-simple-table>
             </div>
             <div class="col-12" v-show="0 < paginationLength">
                 <v-pagination
                     class="my-4"
                     v-model="select.page"
                     :length="paginationLength"
+                    :loading="isLoading"
+                    :disabled="isLoading"
                 ></v-pagination>
             </div>
         </div>
@@ -92,6 +101,7 @@
 export default {
     data() {
         return {
+            isLoading: true,
             leagues: [],
             ladders: [],
             select: {
@@ -103,6 +113,7 @@ export default {
     mounted() {
         axios.get("/api/v1/poe/leagues").then((res) => {
             this.leagues = res.data;
+            this.isLoading = false;
         });
     },
     computed: {
@@ -114,6 +125,7 @@ export default {
     watch: {
         select: {
             handler: function () {
+                this.isLoading = true;
                 axios
                     .get(`/api/v1/poe/ladders/${this.select.league}`, {
                         params: {
@@ -122,6 +134,7 @@ export default {
                     })
                     .then((res) => {
                         this.ladders = res.data;
+                        this.isLoading = false;
                     });
             },
             deep: true,

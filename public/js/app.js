@@ -1970,9 +1970,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      isLoading: true,
       leagues: [],
       ladders: [],
       select: {
@@ -1986,6 +1996,7 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get("/api/v1/poe/leagues").then(function (res) {
       _this.leagues = res.data;
+      _this.isLoading = false;
     });
   },
   computed: {
@@ -1999,12 +2010,14 @@ __webpack_require__.r(__webpack_exports__);
       handler: function handler() {
         var _this2 = this;
 
+        this.isLoading = true;
         axios.get("/api/v1/poe/ladders/".concat(this.select.league), {
           params: {
             offset: (this.select.page - 1) * 20
           }
         }).then(function (res) {
           _this2.ladders = res.data;
+          _this2.isLoading = false;
         });
       },
       deep: true
@@ -38131,6 +38144,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("v-container", [
     _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }),
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "col-12" },
@@ -38141,6 +38156,8 @@ var render = function() {
               "item-text": "id",
               "item-value": "id",
               label: "League",
+              loading: _vm.isLoading,
+              disabled: _vm.isLoading,
               "single-line": ""
             },
             on: {
@@ -38160,132 +38177,164 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-12 overflow-scroll" }, [
-        _c("table", { staticClass: "table" }, [
-          _c("thead", [
-            _c("tr", [
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Character")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Level")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Account")])
-            ])
-          ]),
+      _c(
+        "div",
+        { staticClass: "col-12" },
+        [
+          _c("v-skeleton-loader", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.isLoading,
+                expression: "isLoading"
+              }
+            ],
+            attrs: { type: "table-heading, table-row-divider@20" }
+          }),
           _vm._v(" "),
           _c(
-            "tbody",
-            _vm._l(_vm.ladders.entries, function(ladder, index) {
-              return _c("tr", { key: index }, [
-                _c("td", [_vm._v(_vm._s(ladder.rank))]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("div", [
-                    _vm._v(
-                      "\n                                " +
-                        _vm._s(ladder.character.name) +
-                        "\n                            "
-                    )
-                  ]),
+            "v-simple-table",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.isLoading,
+                  expression: "!isLoading"
+                }
+              ]
+            },
+            [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "text-gray-500 text-xs" }, [
-                    _vm._v(
-                      "\n                                " +
-                        _vm._s(ladder.character.class) +
-                        "\n                            "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(ladder.character.level))]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "div",
-                    { staticClass: "flex" },
-                    [
-                      _c(
-                        "v-icon",
-                        {
-                          class: [
-                            ladder.online ? "text-green-500" : "text-red-500"
-                          ],
-                          attrs: { dense: "" }
-                        },
-                        [_vm._v("mdi-access-point")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "ml-2" }, [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Character")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Level")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Account")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.ladders.entries, function(ladder, index) {
+                  return _c("tr", { key: index }, [
+                    _c("td", [_vm._v(_vm._s(ladder.rank))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", [
                         _vm._v(
-                          "\n                                    " +
-                            _vm._s(ladder.account.name) +
-                            "\n                                "
+                          "\n                                " +
+                            _vm._s(ladder.character.name) +
+                            "\n                            "
                         )
                       ]),
                       _vm._v(" "),
-                      ladder.public
-                        ? _c(
-                            "a",
+                      _c("div", { staticClass: "text-gray-500 text-xs" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(ladder.character.class) +
+                            "\n                            "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(ladder.character.level))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "div",
+                        { staticClass: "flex" },
+                        [
+                          _c(
+                            "v-icon",
                             {
-                              staticClass: "ml-2 no-underline",
-                              attrs: {
-                                href:
-                                  "https://www.pathofexile.com/account/view-profile/" +
-                                  ladder.account.name +
-                                  "/characters",
-                                target: "_blank"
-                              }
+                              class: [
+                                ladder.online
+                                  ? "text-green-500"
+                                  : "text-red-500"
+                              ],
+                              attrs: { dense: "" }
                             },
-                            [
-                              _c(
-                                "v-icon",
+                            [_vm._v("mdi-access-point")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "ml-2" }, [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(ladder.account.name) +
+                                "\n                                "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          ladder.public
+                            ? _c(
+                                "a",
                                 {
-                                  staticClass: "text-yellow-800",
-                                  attrs: { dense: "" }
+                                  staticClass: "ml-2 no-underline",
+                                  attrs: {
+                                    href:
+                                      "https://www.pathofexile.com/account/view-profile/" +
+                                      ladder.account.name +
+                                      "/characters",
+                                    target: "_blank"
+                                  }
                                 },
-                                [_vm._v("mdi-card-account-details-outline")]
+                                [
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      staticClass: "text-yellow-800",
+                                      attrs: { dense: "" }
+                                    },
+                                    [_vm._v("mdi-card-account-details-outline")]
+                                  )
+                                ],
+                                1
                               )
-                            ],
-                            1
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      ladder.account.twitch
-                        ? _c(
-                            "a",
-                            {
-                              staticClass: "ml-2 no-underline",
-                              attrs: {
-                                href:
-                                  "https://www.twitch.tv/" +
-                                  ladder.account.twitch.name,
-                                target: "_blank"
-                              }
-                            },
-                            [
-                              _c(
-                                "v-icon",
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ladder.account.twitch
+                            ? _c(
+                                "a",
                                 {
-                                  staticClass: "text-purple-700",
-                                  attrs: { dense: "" }
+                                  staticClass: "ml-2 no-underline",
+                                  attrs: {
+                                    href:
+                                      "https://www.twitch.tv/" +
+                                      ladder.account.twitch.name,
+                                    target: "_blank"
+                                  }
                                 },
-                                [_vm._v("mdi-twitch")]
+                                [
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      staticClass: "text-purple-700",
+                                      attrs: { dense: "" }
+                                    },
+                                    [_vm._v("mdi-twitch")]
+                                  )
+                                ],
+                                1
                               )
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  )
-                ])
-              ])
-            }),
-            0
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ]
           )
-        ])
-      ]),
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "div",
@@ -38303,7 +38352,11 @@ var render = function() {
         [
           _c("v-pagination", {
             staticClass: "my-4",
-            attrs: { length: _vm.paginationLength },
+            attrs: {
+              length: _vm.paginationLength,
+              loading: _vm.isLoading,
+              disabled: _vm.isLoading
+            },
             model: {
               value: _vm.select.page,
               callback: function($$v) {
