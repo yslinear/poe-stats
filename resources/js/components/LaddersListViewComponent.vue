@@ -1,7 +1,6 @@
 <template>
     <v-container>
         <div class="row">
-            <div class="col-12"></div>
             <div class="col-12">
                 <v-select
                     v-model="select.league"
@@ -20,7 +19,7 @@
                     type="table-heading, table-row-divider@20"
                     v-show="isLoading"
                 ></v-skeleton-loader>
-                <v-simple-table v-show="!isLoading">
+                <v-simple-table v-show="!isLoading" class="overflow-scroll">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -84,7 +83,7 @@
                     </tbody>
                 </v-simple-table>
             </div>
-            <div class="col-12" v-show="0 < paginationLength">
+            <div class="col-12" v-show="0 <= paginationLength">
                 <v-pagination
                     class="my-4"
                     v-model="select.page"
