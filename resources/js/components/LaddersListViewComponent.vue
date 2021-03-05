@@ -19,7 +19,7 @@
                     type="table-heading, table-row-divider@20"
                     v-show="isLoading"
                 ></v-skeleton-loader>
-                <v-simple-table v-show="!isLoading" class="overflow-scroll">
+                <v-simple-table v-show="!isLoading">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -35,12 +35,30 @@
                         >
                             <td>{{ ladder.rank }}</td>
                             <td>
-                                <div>
-                                    {{ ladder.character.name }}
-                                </div>
-                                <div class="text-gray-500 text-xs">
-                                    {{ ladder.character.class }}
-                                </div>
+                                <v-row no-gutters class="items-center">
+                                    <v-col class="max-w-fit-content">
+                                        <div>
+                                            {{ ladder.character.name }}
+                                        </div>
+                                        <div class="text-gray-500 text-xs">
+                                            {{ ladder.character.class }}
+                                        </div>
+                                    </v-col>
+                                    <v-col>
+                                        <v-icon
+                                            v-if="ladder.dead"
+                                            dense
+                                            class="text-red-500 ml-2"
+                                            >mdi-emoticon-dead-outline</v-icon
+                                        >
+                                        <v-icon
+                                            v-if="ladder.retired"
+                                            dense
+                                            class="text-red-500 ml-2"
+                                            >mdi-exit-run</v-icon
+                                        >
+                                    </v-col>
+                                </v-row>
                             </td>
                             <td>{{ ladder.character.level }}</td>
                             <td>
@@ -83,7 +101,7 @@
                     </tbody>
                 </v-simple-table>
             </div>
-            <div class="col-12" v-show="0 <= paginationLength">
+            <div class="col-12" v-show="0 < paginationLength">
                 <v-pagination
                     class="my-4"
                     v-model="select.page"

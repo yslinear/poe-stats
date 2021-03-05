@@ -1978,6 +1978,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -38200,8 +38218,7 @@ var render = function() {
                   value: !_vm.isLoading,
                   expression: "!isLoading"
                 }
-              ],
-              staticClass: "overflow-scroll"
+              ]
             },
             [
               _c("thead", [
@@ -38222,23 +38239,71 @@ var render = function() {
                   return _c("tr", { key: index }, [
                     _c("td", [_vm._v(_vm._s(ladder.rank))]),
                     _vm._v(" "),
-                    _c("td", [
-                      _c("div", [
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(ladder.character.name) +
-                            "\n                            "
+                    _c(
+                      "td",
+                      [
+                        _c(
+                          "v-row",
+                          {
+                            staticClass: "items-center",
+                            attrs: { "no-gutters": "" }
+                          },
+                          [
+                            _c("v-col", { staticClass: "max-w-fit-content" }, [
+                              _c("div", [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(ladder.character.name) +
+                                    "\n                                    "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "text-gray-500 text-xs" },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(ladder.character.class) +
+                                      "\n                                    "
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              [
+                                ladder.dead
+                                  ? _c(
+                                      "v-icon",
+                                      {
+                                        staticClass: "text-red-500 ml-2",
+                                        attrs: { dense: "" }
+                                      },
+                                      [_vm._v("mdi-emoticon-dead-outline")]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                ladder.retired
+                                  ? _c(
+                                      "v-icon",
+                                      {
+                                        staticClass: "text-red-500 ml-2",
+                                        attrs: { dense: "" }
+                                      },
+                                      [_vm._v("mdi-exit-run")]
+                                    )
+                                  : _vm._e()
+                              ],
+                              1
+                            )
+                          ],
+                          1
                         )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "text-gray-500 text-xs" }, [
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(ladder.character.class) +
-                            "\n                            "
-                        )
-                      ])
-                    ]),
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(ladder.character.level))]),
                     _vm._v(" "),
@@ -38341,8 +38406,8 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: 0 <= _vm.paginationLength,
-              expression: "0 <= paginationLength"
+              value: 0 < _vm.paginationLength,
+              expression: "0 < paginationLength"
             }
           ],
           staticClass: "col-12"
