@@ -1834,6 +1834,131 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CharacterInfoComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CharacterInfoComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      isLoading: true,
+      data: {}
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get("/api/v1/poe/character" + window.location.search).then(function (res) {
+      _this.data = res.data;
+      _this.isLoading = false;
+    });
+  },
+  computed: {},
+  watch: {},
+  methods: {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -1880,6 +2005,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2082,6 +2220,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
 Vue.component('ladders-list-view-component', __webpack_require__(/*! ./components/LaddersListViewComponent.vue */ "./resources/js/components/LaddersListViewComponent.vue").default);
+Vue.component('character-info-component', __webpack_require__(/*! ./components/CharacterInfoComponent.vue */ "./resources/js/components/CharacterInfoComponent.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -37958,6 +38097,45 @@ module.exports = function (list, options) {
 
 /***/ }),
 
+/***/ "./resources/js/components/CharacterInfoComponent.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/CharacterInfoComponent.vue ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CharacterInfoComponent_vue_vue_type_template_id_39261f1e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CharacterInfoComponent.vue?vue&type=template&id=39261f1e& */ "./resources/js/components/CharacterInfoComponent.vue?vue&type=template&id=39261f1e&");
+/* harmony import */ var _CharacterInfoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CharacterInfoComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CharacterInfoComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _CharacterInfoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _CharacterInfoComponent_vue_vue_type_template_id_39261f1e___WEBPACK_IMPORTED_MODULE_0__.render,
+  _CharacterInfoComponent_vue_vue_type_template_id_39261f1e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CharacterInfoComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/ExampleComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/ExampleComponent.vue ***!
@@ -38036,6 +38214,22 @@ component.options.__file = "resources/js/components/LaddersListViewComponent.vue
 
 /***/ }),
 
+/***/ "./resources/js/components/CharacterInfoComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/CharacterInfoComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CharacterInfoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CharacterInfoComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CharacterInfoComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CharacterInfoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -38065,6 +38259,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LaddersListViewComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LaddersListViewComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/LaddersListViewComponent.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LaddersListViewComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CharacterInfoComponent.vue?vue&type=template&id=39261f1e&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/CharacterInfoComponent.vue?vue&type=template&id=39261f1e& ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CharacterInfoComponent_vue_vue_type_template_id_39261f1e___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CharacterInfoComponent_vue_vue_type_template_id_39261f1e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CharacterInfoComponent_vue_vue_type_template_id_39261f1e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CharacterInfoComponent.vue?vue&type=template&id=39261f1e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CharacterInfoComponent.vue?vue&type=template&id=39261f1e&");
+
 
 /***/ }),
 
@@ -38098,6 +38309,230 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LaddersListViewComponent_vue_vue_type_template_id_f2231b98___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LaddersListViewComponent_vue_vue_type_template_id_f2231b98___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LaddersListViewComponent.vue?vue&type=template&id=f2231b98& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/LaddersListViewComponent.vue?vue&type=template&id=f2231b98&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CharacterInfoComponent.vue?vue&type=template&id=39261f1e&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CharacterInfoComponent.vue?vue&type=template&id=39261f1e& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-container",
+    [
+      _c(
+        "v-row",
+        [
+          _c(
+            "v-col",
+            { attrs: { cols: "12", sm: "4" } },
+            [
+              _c(
+                "v-card",
+                { staticClass: "p-4", attrs: { elevation: "2" } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "text-center" },
+                    [
+                      _c(
+                        "v-avatar",
+                        {
+                          staticClass: "rounded mb-4",
+                          attrs: { tile: "", size: "128" }
+                        },
+                        [
+                          _c("v-img", {
+                            attrs: {
+                              src:
+                                "https://poe.ninja/images/classes/" +
+                                _vm.data.class +
+                                "_avatar.png",
+                              alt: _vm.data.class,
+                              height: "128"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-lg font-semibold" }, [
+                        _vm._v(_vm._s(_vm.data.name))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-base" }, [
+                        _vm._v(
+                          "\n                        Level " +
+                            _vm._s(_vm.data.level) +
+                            " " +
+                            _vm._s(_vm.data.class) +
+                            "\n                    "
+                        )
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-divider", { staticClass: "my-4" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-base font-semibold" }, [
+                    _vm._v("Attributes")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ml-1 mb-4 text-sm" }, [
+                    _c("div", { staticClass: "flex place-content-between" }, [
+                      _c("div", [_vm._v("Strength")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-red-500" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.data.defensiveStats.strength) +
+                            "\n                        "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex place-content-between" }, [
+                      _c("div", [_vm._v("Dexterity")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-green-500" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.data.defensiveStats.dexterity) +
+                            "\n                        "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex place-content-between" }, [
+                      _c("div", [_vm._v("Intelligence")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-blue-500" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.data.defensiveStats.intelligence) +
+                            "\n                        "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-base font-semibold" }, [
+                    _vm._v("Defensive")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ml-1 mb-4 text-sm" }, [
+                    _c("div", { staticClass: "flex place-content-between" }, [
+                      _c("div", [_vm._v("Life")]),
+                      _vm._v(" "),
+                      _c("div", [_vm._v(_vm._s(_vm.data.defensiveStats.life))])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex place-content-between" }, [
+                      _c("div", [_vm._v("Mana")]),
+                      _vm._v(" "),
+                      _c("div", [_vm._v(_vm._s(_vm.data.defensiveStats.mana))])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex place-content-between" }, [
+                      _c("div", [_vm._v("Energy shield")]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _vm._v(_vm._s(_vm.data.defensiveStats.energyShield))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex place-content-between" }, [
+                      _c("div", [_vm._v("Armour")]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _vm._v(_vm._s(_vm.data.defensiveStats.armour))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex place-content-between" }, [
+                      _c("div", [_vm._v("Evasion rating")]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _vm._v(_vm._s(_vm.data.defensiveStats.evasionRating))
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-base font-semibold" }, [
+                    _vm._v("Charges")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ml-1 mb-4 text-sm" }, [
+                    _c("div", { staticClass: "flex place-content-between" }, [
+                      _c("div", [_vm._v("Endurance charges")]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.data.defensiveStats.enduranceCharges) +
+                            "\n                        "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex place-content-between" }, [
+                      _c("div", [_vm._v("Frenzy charges")]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _vm._v(_vm._s(_vm.data.defensiveStats.frenzyCharges))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex place-content-between" }, [
+                      _c("div", [_vm._v("Power charges")]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _vm._v(_vm._s(_vm.data.defensiveStats.powerCharges))
+                      ])
+                    ])
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", sm: "8" } },
+            [
+              _c("v-card", { staticClass: "p-4", attrs: { elevation: "2" } }, [
+                _c("div", { staticClass: "text-base font-semibold" }, [
+                  _vm._v("Skill DPS Estimation")
+                ])
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
 
 
 /***/ }),
@@ -38253,7 +38688,10 @@ var render = function() {
                         [
                           _c(
                             "v-avatar",
-                            { attrs: { tile: "", size: "32" } },
+                            {
+                              staticClass: "rounded",
+                              attrs: { tile: "", size: "32" }
+                            },
                             [
                               _c("v-img", {
                                 attrs: {
@@ -38270,13 +38708,38 @@ var render = function() {
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "ml-2" }, [
-                            _c("div", [
-                              _vm._v(
-                                "\n                                        " +
-                                  _vm._s(ladder.character.name) +
-                                  "\n                                    "
-                              )
-                            ]),
+                            ladder.public
+                              ? _c(
+                                  "a",
+                                  {
+                                    attrs: {
+                                      target: "_blank",
+                                      href:
+                                        "character?account=" +
+                                        ladder.account.name +
+                                        "&name=" +
+                                        ladder.character.name +
+                                        "&overview=" +
+                                        _vm.select.league
+                                          .replaceAll(" ", "-")
+                                          .toLowerCase()
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                        " +
+                                        _vm._s(ladder.character.name) +
+                                        "\n                                    "
+                                    )
+                                  ]
+                                )
+                              : _c("div", [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(ladder.character.name) +
+                                      "\n                                    "
+                                  )
+                                ]),
                             _vm._v(" "),
                             _c(
                               "div",

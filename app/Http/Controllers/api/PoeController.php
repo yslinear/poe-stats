@@ -4,7 +4,6 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
 
 class PoeController extends Controller
 {
@@ -19,6 +18,16 @@ class PoeController extends Controller
     {
         $client = new \GuzzleHttp\Client();
         $res = $client->request('GET', 'https://www.pathofexile.com/api/ladders/' . $id, [
+            'query' => $request->all()
+        ]);
+        return $res->getBody()->getContents();
+    }
+
+    public function character(Request $request)
+    {
+        $client = new \GuzzleHttp\Client();
+        $hash = hash('ripemd160', json_encode($request->all()));
+        $res = $client->request('GET', 'https://poe.ninja/api/data/{$hash}/GetCharacter', [
             'query' => $request->all()
         ]);
         return $res->getBody()->getContents();

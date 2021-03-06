@@ -36,7 +36,7 @@
                             <td>{{ ladder.rank }}</td>
                             <td>
                                 <div class="flex items-center">
-                                    <v-avatar tile size="32">
+                                    <v-avatar tile size="32" class="rounded">
                                         <v-img
                                             :src="`https://poe.ninja/images/classes/${ladder.character.class}_avatar.png`"
                                             :alt="ladder.character.class"
@@ -44,7 +44,20 @@
                                         ></v-img>
                                     </v-avatar>
                                     <div class="ml-2">
-                                        <div>
+                                        <a
+                                            v-if="ladder.public"
+                                            target="_blank"
+                                            :href="`character?account=${
+                                                ladder.account.name
+                                            }&name=${
+                                                ladder.character.name
+                                            }&overview=${select.league
+                                                .replaceAll(' ', '-')
+                                                .toLowerCase()}`"
+                                        >
+                                            {{ ladder.character.name }}
+                                        </a>
+                                        <div v-else>
                                             {{ ladder.character.name }}
                                         </div>
                                         <div class="text-gray-500 text-xs">
