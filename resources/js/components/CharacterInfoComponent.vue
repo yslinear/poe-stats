@@ -2,7 +2,12 @@
     <v-container>
         <v-row>
             <v-col cols="12" sm="4">
-                <v-card class="p-4" elevation="2">
+                <v-card class="p-4" elevation="2" v-if="isLoading">
+                    <v-skeleton-loader
+                        type="image, list-item-avatar-three-line, list-item-avatar-three-line, list-item-avatar-three-line"
+                    ></v-skeleton-loader>
+                </v-card>
+                <v-card class="p-4" elevation="2" v-else>
                     <div class="text-center">
                         <v-avatar tile size="128" class="rounded mb-4">
                             <v-img
@@ -14,6 +19,9 @@
                         <div class="text-lg font-semibold">{{ data.name }}</div>
                         <div class="text-base">
                             Level {{ data.level }} {{ data.class }}
+                        </div>
+                        <div class="text-base">
+                            {{ data.league }}
                         </div>
                     </div>
                     <v-divider class="my-4"></v-divider>
@@ -65,24 +73,55 @@
                     <div class="ml-1 mb-4 text-sm">
                         <div class="flex place-content-between">
                             <div>Endurance charges</div>
-                            <div>
+                            <div class="text-red-500">
                                 {{ data.defensiveStats.enduranceCharges }}
                             </div>
                         </div>
                         <div class="flex place-content-between">
                             <div>Frenzy charges</div>
-                            <div>{{ data.defensiveStats.frenzyCharges }}</div>
+                            <div class="text-green-500">
+                                {{ data.defensiveStats.frenzyCharges }}
+                            </div>
                         </div>
                         <div class="flex place-content-between">
                             <div>Power charges</div>
-                            <div>{{ data.defensiveStats.powerCharges }}</div>
+                            <div class="text-blue-500">
+                                {{ data.defensiveStats.powerCharges }}
+                            </div>
                         </div>
                     </div>
                 </v-card>
             </v-col>
             <v-col cols="12" sm="8">
                 <v-card class="p-4" elevation="2">
-                    <div class="text-base font-semibold">Skill DPS Estimation</div>
+                    <div class="text-base font-semibold">Passive tree</div>
+                    <div class="ml-1 mb-4 text-sm">
+                        <div>Keystones</div>
+                        <div
+                            v-for="(keyStone, index) in data.keyStones"
+                            :key="index"
+                            class="border rounded p-2 mt-2"
+                        >
+                            <div class="flex">
+                                <v-avatar tile size="40" class="rounded mr-2">
+                                    <v-img
+                                        :src="`https://web.poecdn.com/image/${keyStone.icon}`"
+                                        :alt="keyStone.name"
+                                        sizes="40"
+                                    ></v-img>
+                                </v-avatar>
+                                <div>
+                                    <div>{{ keyStone.name }}</div>
+                                    <li
+                                        v-for="(item, i) in keyStone.stats"
+                                        :key="i"
+                                    >
+                                        {{ item }}
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </v-card>
             </v-col>
         </v-row>
@@ -100,7 +139,7 @@ export default {
     },
     mounted() {
         axios
-            .get("/api/v1/poe/character" + window.location.search)
+            .get(`/api/v1/poe/character${window.location.search}`)
             .then((res) => {
                 this.data = res.data;
                 this.isLoading = false;

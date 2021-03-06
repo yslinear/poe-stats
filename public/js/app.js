@@ -1944,6 +1944,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1954,8 +1986,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    return;
-    axios.get("/api/v1/poe/character" + window.location.search).then(function (res) {
+    axios.get("/api/v1/poe/character".concat(window.location.search)).then(function (res) {
       _this.data = res.data;
       _this.isLoading = false;
     });
@@ -38358,7 +38389,10 @@ var render = function() {
                     { staticClass: "p-4", attrs: { elevation: "2" } },
                     [
                       _c("v-skeleton-loader", {
-                        attrs: { type: "card-avatar" }
+                        attrs: {
+                          type:
+                            "image, list-item-avatar-three-line, list-item-avatar-three-line, list-item-avatar-three-line"
+                        }
                       })
                     ],
                     1
@@ -38402,6 +38436,14 @@ var render = function() {
                                 _vm._s(_vm.data.level) +
                                 " " +
                                 _vm._s(_vm.data.class) +
+                                "\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "text-base" }, [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(_vm.data.league) +
                                 "\n                    "
                             )
                           ])
@@ -38546,7 +38588,7 @@ var render = function() {
                           [
                             _c("div", [_vm._v("Endurance charges")]),
                             _vm._v(" "),
-                            _c("div", [
+                            _c("div", { staticClass: "text-red-500" }, [
                               _vm._v(
                                 "\n                            " +
                                   _vm._s(
@@ -38564,9 +38606,13 @@ var render = function() {
                           [
                             _c("div", [_vm._v("Frenzy charges")]),
                             _vm._v(" "),
-                            _c("div", [
+                            _c("div", { staticClass: "text-green-500" }, [
                               _vm._v(
-                                _vm._s(_vm.data.defensiveStats.frenzyCharges)
+                                "\n                            " +
+                                  _vm._s(
+                                    _vm.data.defensiveStats.frenzyCharges
+                                  ) +
+                                  "\n                        "
                               )
                             ])
                           ]
@@ -38578,9 +38624,11 @@ var render = function() {
                           [
                             _c("div", [_vm._v("Power charges")]),
                             _vm._v(" "),
-                            _c("div", [
+                            _c("div", { staticClass: "text-blue-500" }, [
                               _vm._v(
-                                _vm._s(_vm.data.defensiveStats.powerCharges)
+                                "\n                            " +
+                                  _vm._s(_vm.data.defensiveStats.powerCharges) +
+                                  "\n                        "
                               )
                             ])
                           ]
@@ -38599,10 +38647,70 @@ var render = function() {
             [
               _c("v-card", { staticClass: "p-4", attrs: { elevation: "2" } }, [
                 _c("div", { staticClass: "text-base font-semibold" }, [
-                  _vm._v(
-                    "\n                    Skill DPS Estimation\n                "
-                  )
-                ])
+                  _vm._v("Passive tree")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "ml-1 mb-4 text-sm" },
+                  [
+                    _c("div", [_vm._v("Keystones")]),
+                    _vm._v(" "),
+                    _vm._l(_vm.data.keyStones, function(keyStone, index) {
+                      return _c(
+                        "div",
+                        { key: index, staticClass: "border rounded p-2 mt-2" },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "flex" },
+                            [
+                              _c(
+                                "v-avatar",
+                                {
+                                  staticClass: "rounded mr-2",
+                                  attrs: { tile: "", size: "40" }
+                                },
+                                [
+                                  _c("v-img", {
+                                    attrs: {
+                                      src:
+                                        "https://web.poecdn.com/image/" +
+                                        keyStone.icon,
+                                      alt: keyStone.name,
+                                      sizes: "40"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                [
+                                  _c("div", [_vm._v(_vm._s(keyStone.name))]),
+                                  _vm._v(" "),
+                                  _vm._l(keyStone.stats, function(item, i) {
+                                    return _c("li", { key: i }, [
+                                      _vm._v(
+                                        "\n                                    " +
+                                          _vm._s(item) +
+                                          "\n                                "
+                                      )
+                                    ])
+                                  })
+                                ],
+                                2
+                              )
+                            ],
+                            1
+                          )
+                        ]
+                      )
+                    })
+                  ],
+                  2
+                )
               ])
             ],
             1
