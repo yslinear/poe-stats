@@ -11,3 +11,8 @@
 - [Bootstrap](https://getbootstrap.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Material Design Icons](https://materialdesignicons.com/)
+
+## API
+
+- https://www.pathofexile.com/
+- https://poe.ninja/
