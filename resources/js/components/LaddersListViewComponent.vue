@@ -17,9 +17,9 @@
             <div class="col-12">
                 <v-skeleton-loader
                     type="table-heading, table-row-divider@20"
-                    v-show="isLoading"
+                    v-if="isLoading"
                 ></v-skeleton-loader>
-                <v-simple-table v-show="!isLoading">
+                <v-simple-table v-else>
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -148,10 +148,17 @@ export default {
         };
     },
     mounted() {
-        axios.get("/api/v1/poe/leagues").then((res) => {
-            this.leagues = res.data;
-            this.isLoading = false;
-        });
+        axios
+            .get("/api/v1/poe/leagues", {
+                params: {
+                    realm: "pc",
+                    offset: 4,
+                },
+            })
+            .then((res) => {
+                this.leagues = res.data;
+                this.isLoading = false;
+            });
     },
     computed: {
         paginationLength: function () {

@@ -1937,6 +1937,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1947,6 +1954,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    return;
     axios.get("/api/v1/poe/character" + window.location.search).then(function (res) {
       _this.data = res.data;
       _this.isLoading = false;
@@ -2156,7 +2164,12 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/api/v1/poe/leagues").then(function (res) {
+    axios.get("/api/v1/poe/leagues", {
+      params: {
+        realm: "pc",
+        offset: 4
+      }
+    }).then(function (res) {
       _this.leagues = res.data;
       _this.isLoading = false;
     });
@@ -38339,174 +38352,243 @@ var render = function() {
             "v-col",
             { attrs: { cols: "12", sm: "4" } },
             [
-              _c(
-                "v-card",
-                { staticClass: "p-4", attrs: { elevation: "2" } },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "text-center" },
+              _vm.isLoading
+                ? _c(
+                    "v-card",
+                    { staticClass: "p-4", attrs: { elevation: "2" } },
+                    [
+                      _c("v-skeleton-loader", {
+                        attrs: { type: "card-avatar" }
+                      })
+                    ],
+                    1
+                  )
+                : _c(
+                    "v-card",
+                    { staticClass: "p-4", attrs: { elevation: "2" } },
                     [
                       _c(
-                        "v-avatar",
-                        {
-                          staticClass: "rounded mb-4",
-                          attrs: { tile: "", size: "128" }
-                        },
+                        "div",
+                        { staticClass: "text-center" },
                         [
-                          _c("v-img", {
-                            attrs: {
-                              src:
-                                "https://poe.ninja/images/classes/" +
-                                _vm.data.class +
-                                "_avatar.png",
-                              alt: _vm.data.class,
-                              height: "128"
-                            }
-                          })
+                          _c(
+                            "v-avatar",
+                            {
+                              staticClass: "rounded mb-4",
+                              attrs: { tile: "", size: "128" }
+                            },
+                            [
+                              _c("v-img", {
+                                attrs: {
+                                  src:
+                                    "https://poe.ninja/images/classes/" +
+                                    _vm.data.class +
+                                    "_avatar.png",
+                                  alt: _vm.data.class,
+                                  height: "128"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "text-lg font-semibold" }, [
+                            _vm._v(_vm._s(_vm.data.name))
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "text-base" }, [
+                            _vm._v(
+                              "\n                        Level " +
+                                _vm._s(_vm.data.level) +
+                                " " +
+                                _vm._s(_vm.data.class) +
+                                "\n                    "
+                            )
+                          ])
                         ],
                         1
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "text-lg font-semibold" }, [
-                        _vm._v(_vm._s(_vm.data.name))
+                      _c("v-divider", { staticClass: "my-4" }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-base font-semibold" }, [
+                        _vm._v("Attributes")
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "text-base" }, [
-                        _vm._v(
-                          "\n                        Level " +
-                            _vm._s(_vm.data.level) +
-                            " " +
-                            _vm._s(_vm.data.class) +
-                            "\n                    "
+                      _c("div", { staticClass: "ml-1 mb-4 text-sm" }, [
+                        _c(
+                          "div",
+                          { staticClass: "flex place-content-between" },
+                          [
+                            _c("div", [_vm._v("Strength")]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "text-red-500" }, [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(_vm.data.defensiveStats.strength) +
+                                  "\n                        "
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "flex place-content-between" },
+                          [
+                            _c("div", [_vm._v("Dexterity")]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "text-green-500" }, [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(_vm.data.defensiveStats.dexterity) +
+                                  "\n                        "
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "flex place-content-between" },
+                          [
+                            _c("div", [_vm._v("Intelligence")]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "text-blue-500" }, [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(_vm.data.defensiveStats.intelligence) +
+                                  "\n                        "
+                              )
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-base font-semibold" }, [
+                        _vm._v("Defensive")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ml-1 mb-4 text-sm" }, [
+                        _c(
+                          "div",
+                          { staticClass: "flex place-content-between" },
+                          [
+                            _c("div", [_vm._v("Life")]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _vm._v(_vm._s(_vm.data.defensiveStats.life))
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "flex place-content-between" },
+                          [
+                            _c("div", [_vm._v("Mana")]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _vm._v(_vm._s(_vm.data.defensiveStats.mana))
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "flex place-content-between" },
+                          [
+                            _c("div", [_vm._v("Energy shield")]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _vm._v(
+                                _vm._s(_vm.data.defensiveStats.energyShield)
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "flex place-content-between" },
+                          [
+                            _c("div", [_vm._v("Armour")]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _vm._v(_vm._s(_vm.data.defensiveStats.armour))
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "flex place-content-between" },
+                          [
+                            _c("div", [_vm._v("Evasion rating")]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _vm._v(
+                                _vm._s(_vm.data.defensiveStats.evasionRating)
+                              )
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-base font-semibold" }, [
+                        _vm._v("Charges")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ml-1 mb-4 text-sm" }, [
+                        _c(
+                          "div",
+                          { staticClass: "flex place-content-between" },
+                          [
+                            _c("div", [_vm._v("Endurance charges")]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(
+                                    _vm.data.defensiveStats.enduranceCharges
+                                  ) +
+                                  "\n                        "
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "flex place-content-between" },
+                          [
+                            _c("div", [_vm._v("Frenzy charges")]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _vm._v(
+                                _vm._s(_vm.data.defensiveStats.frenzyCharges)
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "flex place-content-between" },
+                          [
+                            _c("div", [_vm._v("Power charges")]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _vm._v(
+                                _vm._s(_vm.data.defensiveStats.powerCharges)
+                              )
+                            ])
+                          ]
                         )
                       ])
                     ],
                     1
-                  ),
-                  _vm._v(" "),
-                  _c("v-divider", { staticClass: "my-4" }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-base font-semibold" }, [
-                    _vm._v("Attributes")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "ml-1 mb-4 text-sm" }, [
-                    _c("div", { staticClass: "flex place-content-between" }, [
-                      _c("div", [_vm._v("Strength")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "text-red-500" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.data.defensiveStats.strength) +
-                            "\n                        "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "flex place-content-between" }, [
-                      _c("div", [_vm._v("Dexterity")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "text-green-500" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.data.defensiveStats.dexterity) +
-                            "\n                        "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "flex place-content-between" }, [
-                      _c("div", [_vm._v("Intelligence")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "text-blue-500" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.data.defensiveStats.intelligence) +
-                            "\n                        "
-                        )
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-base font-semibold" }, [
-                    _vm._v("Defensive")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "ml-1 mb-4 text-sm" }, [
-                    _c("div", { staticClass: "flex place-content-between" }, [
-                      _c("div", [_vm._v("Life")]),
-                      _vm._v(" "),
-                      _c("div", [_vm._v(_vm._s(_vm.data.defensiveStats.life))])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "flex place-content-between" }, [
-                      _c("div", [_vm._v("Mana")]),
-                      _vm._v(" "),
-                      _c("div", [_vm._v(_vm._s(_vm.data.defensiveStats.mana))])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "flex place-content-between" }, [
-                      _c("div", [_vm._v("Energy shield")]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _vm._v(_vm._s(_vm.data.defensiveStats.energyShield))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "flex place-content-between" }, [
-                      _c("div", [_vm._v("Armour")]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _vm._v(_vm._s(_vm.data.defensiveStats.armour))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "flex place-content-between" }, [
-                      _c("div", [_vm._v("Evasion rating")]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _vm._v(_vm._s(_vm.data.defensiveStats.evasionRating))
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-base font-semibold" }, [
-                    _vm._v("Charges")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "ml-1 mb-4 text-sm" }, [
-                    _c("div", { staticClass: "flex place-content-between" }, [
-                      _c("div", [_vm._v("Endurance charges")]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.data.defensiveStats.enduranceCharges) +
-                            "\n                        "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "flex place-content-between" }, [
-                      _c("div", [_vm._v("Frenzy charges")]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _vm._v(_vm._s(_vm.data.defensiveStats.frenzyCharges))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "flex place-content-between" }, [
-                      _c("div", [_vm._v("Power charges")]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _vm._v(_vm._s(_vm.data.defensiveStats.powerCharges))
-                      ])
-                    ])
-                  ])
-                ],
-                1
-              )
+                  )
             ],
             1
           ),
@@ -38517,7 +38599,9 @@ var render = function() {
             [
               _c("v-card", { staticClass: "p-4", attrs: { elevation: "2" } }, [
                 _c("div", { staticClass: "text-base font-semibold" }, [
-                  _vm._v("Skill DPS Estimation")
+                  _vm._v(
+                    "\n                    Skill DPS Estimation\n                "
+                  )
                 ])
               ])
             ],
@@ -38638,244 +38722,229 @@ var render = function() {
         "div",
         { staticClass: "col-12" },
         [
-          _c("v-skeleton-loader", {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.isLoading,
-                expression: "isLoading"
-              }
-            ],
-            attrs: { type: "table-heading, table-row-divider@20" }
-          }),
-          _vm._v(" "),
-          _c(
-            "v-simple-table",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: !_vm.isLoading,
-                  expression: "!isLoading"
-                }
-              ]
-            },
-            [
-              _c("thead", [
-                _c("tr", [
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Character")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Level")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Account")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.ladders.entries, function(ladder, index) {
-                  return _c("tr", { key: index }, [
-                    _c("td", [_vm._v(_vm._s(ladder.rank))]),
+          _vm.isLoading
+            ? _c("v-skeleton-loader", {
+                attrs: { type: "table-heading, table-row-divider@20" }
+              })
+            : _c("v-simple-table", [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
                     _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "div",
-                        { staticClass: "flex items-center" },
-                        [
-                          _c(
-                            "v-avatar",
-                            {
-                              staticClass: "rounded",
-                              attrs: { tile: "", size: "32" }
-                            },
-                            [
-                              _c("v-img", {
-                                attrs: {
-                                  src:
-                                    "https://poe.ninja/images/classes/" +
-                                    ladder.character.class +
-                                    "_avatar.png",
-                                  alt: ladder.character.class,
-                                  height: "32"
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "ml-2" }, [
-                            ladder.public
-                              ? _c(
-                                  "a",
-                                  {
-                                    attrs: {
-                                      target: "_blank",
-                                      href:
-                                        "character?account=" +
-                                        ladder.account.name +
-                                        "&name=" +
-                                        ladder.character.name +
-                                        "&overview=" +
-                                        _vm.select.league
-                                          .replaceAll(" ", "-")
-                                          .toLowerCase()
-                                    }
-                                  },
-                                  [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Character")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Level")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Account")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.ladders.entries, function(ladder, index) {
+                    return _c("tr", { key: index }, [
+                      _c("td", [_vm._v(_vm._s(ladder.rank))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "div",
+                          { staticClass: "flex items-center" },
+                          [
+                            _c(
+                              "v-avatar",
+                              {
+                                staticClass: "rounded",
+                                attrs: { tile: "", size: "32" }
+                              },
+                              [
+                                _c("v-img", {
+                                  attrs: {
+                                    src:
+                                      "https://poe.ninja/images/classes/" +
+                                      ladder.character.class +
+                                      "_avatar.png",
+                                    alt: ladder.character.class,
+                                    height: "32"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "ml-2" }, [
+                              ladder.public
+                                ? _c(
+                                    "a",
+                                    {
+                                      attrs: {
+                                        target: "_blank",
+                                        href:
+                                          "character?account=" +
+                                          ladder.account.name +
+                                          "&name=" +
+                                          ladder.character.name +
+                                          "&overview=" +
+                                          _vm.select.league
+                                            .replaceAll(" ", "-")
+                                            .toLowerCase()
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                        " +
+                                          _vm._s(ladder.character.name) +
+                                          "\n                                    "
+                                      )
+                                    ]
+                                  )
+                                : _c("div", [
                                     _vm._v(
                                       "\n                                        " +
                                         _vm._s(ladder.character.name) +
                                         "\n                                    "
                                     )
-                                  ]
-                                )
-                              : _c("div", [
+                                  ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "text-gray-500 text-xs" },
+                                [
                                   _vm._v(
                                     "\n                                        " +
-                                      _vm._s(ladder.character.name) +
+                                      _vm._s(ladder.character.class) +
                                       "\n                                    "
                                   )
-                                ]),
+                                ]
+                              )
+                            ]),
                             _vm._v(" "),
                             _c(
                               "div",
-                              { staticClass: "text-gray-500 text-xs" },
                               [
-                                _vm._v(
-                                  "\n                                        " +
-                                    _vm._s(ladder.character.class) +
-                                    "\n                                    "
-                                )
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            [
-                              ladder.dead
-                                ? _c(
-                                    "v-icon",
-                                    {
-                                      staticClass: "text-red-500 ml-2",
-                                      attrs: { dense: "" }
-                                    },
-                                    [_vm._v("mdi-emoticon-dead-outline")]
-                                  )
-                                : _vm._e(),
-                              _vm._v(" "),
-                              ladder.retired
-                                ? _c(
-                                    "v-icon",
-                                    {
-                                      staticClass: "text-red-500 ml-2",
-                                      attrs: { dense: "" }
-                                    },
-                                    [_vm._v("mdi-exit-run")]
-                                  )
-                                : _vm._e()
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(ladder.character.level))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "div",
-                        { staticClass: "flex" },
-                        [
-                          _c(
-                            "v-icon",
-                            {
-                              class: [
-                                ladder.online
-                                  ? "text-green-500"
-                                  : "text-red-500"
+                                ladder.dead
+                                  ? _c(
+                                      "v-icon",
+                                      {
+                                        staticClass: "text-red-500 ml-2",
+                                        attrs: { dense: "" }
+                                      },
+                                      [_vm._v("mdi-emoticon-dead-outline")]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                ladder.retired
+                                  ? _c(
+                                      "v-icon",
+                                      {
+                                        staticClass: "text-red-500 ml-2",
+                                        attrs: { dense: "" }
+                                      },
+                                      [_vm._v("mdi-exit-run")]
+                                    )
+                                  : _vm._e()
                               ],
-                              attrs: { dense: "" }
-                            },
-                            [_vm._v("mdi-access-point")]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "ml-2" }, [
-                            _vm._v(
-                              "\n                                    " +
-                                _vm._s(ladder.account.name) +
-                                "\n                                "
+                              1
                             )
-                          ]),
-                          _vm._v(" "),
-                          ladder.public
-                            ? _c(
-                                "a",
-                                {
-                                  staticClass: "ml-2 no-underline",
-                                  attrs: {
-                                    href:
-                                      "https://www.pathofexile.com/account/view-profile/" +
-                                      ladder.account.name +
-                                      "/characters",
-                                    target: "_blank"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "v-icon",
-                                    {
-                                      staticClass: "text-yellow-800",
-                                      attrs: { dense: "" }
-                                    },
-                                    [_vm._v("mdi-card-account-details-outline")]
-                                  )
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(ladder.character.level))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "div",
+                          { staticClass: "flex" },
+                          [
+                            _c(
+                              "v-icon",
+                              {
+                                class: [
+                                  ladder.online
+                                    ? "text-green-500"
+                                    : "text-red-500"
                                 ],
-                                1
+                                attrs: { dense: "" }
+                              },
+                              [_vm._v("mdi-access-point")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "ml-2" }, [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(ladder.account.name) +
+                                  "\n                                "
                               )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          ladder.account.twitch
-                            ? _c(
-                                "a",
-                                {
-                                  staticClass: "ml-2 no-underline",
-                                  attrs: {
-                                    href:
-                                      "https://www.twitch.tv/" +
-                                      ladder.account.twitch.name,
-                                    target: "_blank"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "v-icon",
-                                    {
-                                      staticClass: "text-purple-700",
-                                      attrs: { dense: "" }
-                                    },
-                                    [_vm._v("mdi-twitch")]
-                                  )
-                                ],
-                                1
-                              )
-                            : _vm._e()
-                        ],
-                        1
-                      )
+                            ]),
+                            _vm._v(" "),
+                            ladder.public
+                              ? _c(
+                                  "a",
+                                  {
+                                    staticClass: "ml-2 no-underline",
+                                    attrs: {
+                                      href:
+                                        "https://www.pathofexile.com/account/view-profile/" +
+                                        ladder.account.name +
+                                        "/characters",
+                                      target: "_blank"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "v-icon",
+                                      {
+                                        staticClass: "text-yellow-800",
+                                        attrs: { dense: "" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "mdi-card-account-details-outline"
+                                        )
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            ladder.account.twitch
+                              ? _c(
+                                  "a",
+                                  {
+                                    staticClass: "ml-2 no-underline",
+                                    attrs: {
+                                      href:
+                                        "https://www.twitch.tv/" +
+                                        ladder.account.twitch.name,
+                                      target: "_blank"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "v-icon",
+                                      {
+                                        staticClass: "text-purple-700",
+                                        attrs: { dense: "" }
+                                      },
+                                      [_vm._v("mdi-twitch")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              : _vm._e()
+                          ],
+                          1
+                        )
+                      ])
                     ])
-                  ])
-                }),
-                0
-              )
-            ]
-          )
+                  }),
+                  0
+                )
+              ])
         ],
         1
       ),
