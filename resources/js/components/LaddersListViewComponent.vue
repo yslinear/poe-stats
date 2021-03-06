@@ -35,16 +35,23 @@
                         >
                             <td>{{ ladder.rank }}</td>
                             <td>
-                                <v-row no-gutters class="items-center">
-                                    <v-col class="max-w-fit-content">
+                                <div class="flex items-center">
+                                    <v-avatar tile size="32">
+                                        <v-img
+                                            :src="`https://poe.ninja/images/classes/${ladder.character.class}_avatar.png`"
+                                            :alt="ladder.character.class"
+                                            height="32"
+                                        ></v-img>
+                                    </v-avatar>
+                                    <div class="ml-2">
                                         <div>
                                             {{ ladder.character.name }}
                                         </div>
                                         <div class="text-gray-500 text-xs">
                                             {{ ladder.character.class }}
                                         </div>
-                                    </v-col>
-                                    <v-col>
+                                    </div>
+                                    <div>
                                         <v-icon
                                             v-if="ladder.dead"
                                             dense
@@ -57,8 +64,8 @@
                                             class="text-red-500 ml-2"
                                             >mdi-exit-run</v-icon
                                         >
-                                    </v-col>
-                                </v-row>
+                                    </div>
+                                </div>
                             </td>
                             <td>{{ ladder.character.level }}</td>
                             <td>
