@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 
 class PoeController extends Controller
 {
-    public function leagues()
+    public function leagues(Request $request)
     {
         $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', 'https://www.pathofexile.com/api/leagues?realm=pc');
+        $res = $client->request('GET', 'https://www.pathofexile.com/api/leagues', [
+            'query' => $request->all()
+        ]);
         return $res->getBody()->getContents();
     }
 
