@@ -23,6 +23,16 @@
                         <div class="text-base">
                             {{ data.league }}
                         </div>
+                        <a
+                            :href="`https://www.pathofexile.com/account/view-profile/${data.account}/characters`"
+                            target="_blank"
+                            class="text-yellow-800"
+                        >
+                            {{ data.account }}
+                            <v-icon dense
+                                >mdi-card-account-details-outline</v-icon
+                            >
+                        </a>
                     </div>
                     <v-divider class="my-4"></v-divider>
                     <div class="text-base font-semibold">Attributes</div>
@@ -94,8 +104,20 @@
             </v-col>
             <v-col cols="12" sm="8">
                 <v-card class="p-4" elevation="2">
-                    <div class="text-base font-semibold">Passive tree</div>
-                    <div class="ml-1 mb-4 text-sm">
+                    <a
+                        class="text-base font-semibold"
+                        target="_blank"
+                        :href="data.passiveTreeUrl"
+                    >
+                        Passive tree
+                        <v-icon dense class="ml-2">mdi-open-in-new</v-icon>
+                    </a>
+                    <div v-if="isLoading" class="ml-1 mb-4">
+                        <v-skeleton-loader
+                            type="table-cell, list-item-avatar-three-line@6"
+                        ></v-skeleton-loader>
+                    </div>
+                    <div v-else class="ml-1 mb-4 text-sm">
                         <div>Keystones</div>
                         <div
                             v-for="(keyStone, index) in data.keyStones"
@@ -103,21 +125,21 @@
                             class="border rounded p-2 mt-2"
                         >
                             <div class="flex">
-                                <v-avatar tile size="40" class="rounded mr-2">
+                                <v-avatar tile size="64" class="rounded mr-2">
                                     <v-img
                                         :src="`https://web.poecdn.com/image/${keyStone.icon}`"
                                         :alt="keyStone.name"
-                                        sizes="40"
+                                        sizes="64"
                                     ></v-img>
                                 </v-avatar>
                                 <div>
                                     <div>{{ keyStone.name }}</div>
-                                    <li
+                                    <div
                                         v-for="(item, i) in keyStone.stats"
                                         :key="i"
-                                    >
-                                        {{ item }}
-                                    </li>
+                                        v-html="item"
+                                        class="whitespace-pre-line font-light"
+                                    ></div>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +149,6 @@
         </v-row>
     </v-container>
 </template>
-
 
 <script>
 export default {

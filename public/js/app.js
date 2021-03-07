@@ -1976,6 +1976,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -38446,7 +38467,32 @@ var render = function() {
                                 _vm._s(_vm.data.league) +
                                 "\n                    "
                             )
-                          ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "text-yellow-800",
+                              attrs: {
+                                href:
+                                  "https://www.pathofexile.com/account/view-profile/" +
+                                  _vm.data.account +
+                                  "/characters",
+                                target: "_blank"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(_vm.data.account) +
+                                  "\n                        "
+                              ),
+                              _c("v-icon", { attrs: { dense: "" } }, [
+                                _vm._v("mdi-card-account-details-outline")
+                              ])
+                            ],
+                            1
+                          )
                         ],
                         1
                       ),
@@ -38646,71 +38692,103 @@ var render = function() {
             { attrs: { cols: "12", sm: "8" } },
             [
               _c("v-card", { staticClass: "p-4", attrs: { elevation: "2" } }, [
-                _c("div", { staticClass: "text-base font-semibold" }, [
-                  _vm._v("Passive tree")
-                ]),
-                _vm._v(" "),
                 _c(
-                  "div",
-                  { staticClass: "ml-1 mb-4 text-sm" },
+                  "a",
+                  {
+                    staticClass: "text-base font-semibold",
+                    attrs: { target: "_blank", href: _vm.data.passiveTreeUrl }
+                  },
                   [
-                    _c("div", [_vm._v("Keystones")]),
-                    _vm._v(" "),
-                    _vm._l(_vm.data.keyStones, function(keyStone, index) {
-                      return _c(
-                        "div",
-                        { key: index, staticClass: "border rounded p-2 mt-2" },
-                        [
-                          _c(
+                    _vm._v(
+                      "\n                    Passive tree\n                    "
+                    ),
+                    _c(
+                      "v-icon",
+                      { staticClass: "ml-2", attrs: { dense: "" } },
+                      [_vm._v("mdi-open-in-new")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm.isLoading
+                  ? _c(
+                      "div",
+                      { staticClass: "ml-1 mb-4" },
+                      [
+                        _c("v-skeleton-loader", {
+                          attrs: {
+                            type: "table-cell, list-item-avatar-three-line@6"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  : _c(
+                      "div",
+                      { staticClass: "ml-1 mb-4 text-sm" },
+                      [
+                        _c("div", [_vm._v("Keystones")]),
+                        _vm._v(" "),
+                        _vm._l(_vm.data.keyStones, function(keyStone, index) {
+                          return _c(
                             "div",
-                            { staticClass: "flex" },
+                            {
+                              key: index,
+                              staticClass: "border rounded p-2 mt-2"
+                            },
                             [
                               _c(
-                                "v-avatar",
-                                {
-                                  staticClass: "rounded mr-2",
-                                  attrs: { tile: "", size: "40" }
-                                },
+                                "div",
+                                { staticClass: "flex" },
                                 [
-                                  _c("v-img", {
-                                    attrs: {
-                                      src:
-                                        "https://web.poecdn.com/image/" +
-                                        keyStone.icon,
-                                      alt: keyStone.name,
-                                      sizes: "40"
-                                    }
-                                  })
+                                  _c(
+                                    "v-avatar",
+                                    {
+                                      staticClass: "rounded mr-2",
+                                      attrs: { tile: "", size: "64" }
+                                    },
+                                    [
+                                      _c("v-img", {
+                                        attrs: {
+                                          src:
+                                            "https://web.poecdn.com/image/" +
+                                            keyStone.icon,
+                                          alt: keyStone.name,
+                                          sizes: "64"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    [
+                                      _c("div", [
+                                        _vm._v(_vm._s(keyStone.name))
+                                      ]),
+                                      _vm._v(" "),
+                                      _vm._l(keyStone.stats, function(item, i) {
+                                        return _c("div", {
+                                          key: i,
+                                          staticClass:
+                                            "whitespace-pre-line font-light",
+                                          domProps: { innerHTML: _vm._s(item) }
+                                        })
+                                      })
+                                    ],
+                                    2
+                                  )
                                 ],
                                 1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                [
-                                  _c("div", [_vm._v(_vm._s(keyStone.name))]),
-                                  _vm._v(" "),
-                                  _vm._l(keyStone.stats, function(item, i) {
-                                    return _c("li", { key: i }, [
-                                      _vm._v(
-                                        "\n                                    " +
-                                          _vm._s(item) +
-                                          "\n                                "
-                                      )
-                                    ])
-                                  })
-                                ],
-                                2
                               )
-                            ],
-                            1
+                            ]
                           )
-                        ]
-                      )
-                    })
-                  ],
-                  2
-                )
+                        })
+                      ],
+                      2
+                    )
               ])
             ],
             1
