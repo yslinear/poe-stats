@@ -40,8 +40,8 @@ jobs:
     - name: Get latest code
       uses: actions/checkout@v2
 
-    # - name: Install Composer Dependencies
-    #   run: composer install --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+    - name: Install Composer Dependencies
+      run: composer install --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
     - name: Install Node.js dependencies and minifies JS/CSS files
       run: npm install && npm run prod
