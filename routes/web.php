@@ -28,3 +28,7 @@ Route::get('/ladders', function () {
 Route::get('/character', function () {
     return view('character');
 })->name('character');
+
+Route::get('/currency', function () {
+    return view('currency');
+})->name('currency');

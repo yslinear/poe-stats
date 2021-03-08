@@ -1,18 +1,32 @@
 <template>
     <v-container>
         <v-row>
-            <v-col cols="6" v-show="isLoading">
+            <v-col>
+                <div class="text-lg font-semibold">Chaos equivalent</div>
+            </v-col>
+        </v-row>
+        <v-row>
+            <v-col cols="12" sm="6" v-show="isLoading">
                 <v-card elevation="2">
-                    <v-skeleton-loader type="card, article"></v-skeleton-loader>
+                    <v-skeleton-loader type="article"></v-skeleton-loader>
                 </v-card>
             </v-col>
-            <v-col cols="6" v-for="(league, index) in leagues" :key="index">
+            <v-col cols="12" sm="6" v-show="isLoading">
+                <v-card elevation="2">
+                    <v-skeleton-loader type="article"></v-skeleton-loader>
+                </v-card>
+            </v-col>
+            <v-col
+                cols="12"
+                sm="6"
+                v-for="(league, index) in leagues"
+                :key="index"
+            >
                 <v-card elevation="2" v-show="!isLoading">
-                    <v-card-title>
+                    <v-card-title class="text-base font-semibold">
                         {{ league.id }}
                     </v-card-title>
                     <v-card-text v-if="undefined !== league.currencyOverview">
-                        <div class="ml-2 text-base">Chaos equivalent</div>
                         <v-simple-table>
                             <template v-slot:default>
                                 <tbody>
