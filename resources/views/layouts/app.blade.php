@@ -91,7 +91,7 @@
             <v-footer padless>
                 <v-col class="text-center" cols="12">
                     <a class="no-underline" href="https://github.com/yslinear/">
-                        <v-icon dense class="text-black">mdi-github</v-icon>
+                        <v-icon dense class="text-black" v-text="`mdi-github`"></v-icon>
                     </a>
                 </v-col>
             </v-footer>
