@@ -7,24 +7,50 @@ use Illuminate\Http\Request;
 
 class PoeController extends Controller
 {
+    /**
+     * Get leagues list from pathofexile.com API.
+     *
+     * @param Request $request
+     *
+     * @return string
+     */
     public function leagues(Request $request)
     {
         $client = new \GuzzleHttp\Client();
         $res = $client->request('GET', 'https://www.pathofexile.com/api/leagues', [
             'query' => $request->all()
         ]);
-        return $res->getBody()->getContents();
+        $data = $res->getBody()->getContents();
+
+        return $data;
     }
 
-    public function ladders(Request $request, $id)
+    /**
+     * Get ladders info from pathofexile.com API.
+     *
+     * @param Request $request
+     * @param string $id       The league id.
+     *
+     * @return string
+     */
+    public function ladders(Request $request, string $id)
     {
         $client = new \GuzzleHttp\Client();
         $res = $client->request('GET', 'https://www.pathofexile.com/api/ladders/' . $id, [
             'query' => $request->all()
         ]);
-        return $res->getBody()->getContents();
+        $data = $res->getBody()->getContents();
+
+        return $data;
     }
 
+    /**
+     * Get character info from poe.ninja API.
+     *
+     * @param Request $request
+     *
+     * @return string
+     */
     public function character(Request $request)
     {
         $client = new \GuzzleHttp\Client();
@@ -32,6 +58,8 @@ class PoeController extends Controller
         $res = $client->request('GET', 'https://poe.ninja/api/data/{$hash}/GetCharacter', [
             'query' => $request->all()
         ]);
-        return $res->getBody()->getContents();
+        $data = $res->getBody()->getContents();
+
+        return $data;
     }
 }
