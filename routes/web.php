@@ -23,6 +23,7 @@ Route::prefix('api')->group(function () {
             Route::get('leagues', [App\Http\Controllers\api\PoeController::class, 'leagues']);
             Route::get('ladders/{id}', [App\Http\Controllers\api\PoeController::class, 'ladders']);
             Route::get('character', [App\Http\Controllers\api\PoeController::class, 'character']);
+            Route::get('currencyOverview', [App\Http\Controllers\api\PoeController::class, 'currencyOverview']);
         });
     });
 });

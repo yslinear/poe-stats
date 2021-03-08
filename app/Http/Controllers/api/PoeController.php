@@ -62,4 +62,23 @@ class PoeController extends Controller
 
         return $data;
     }
+
+    /**
+     * Get currencyOverview from poe.ninja API.
+     *
+     * @param Request $request
+     *
+     * @return string
+     */
+    public function currencyOverview(Request $request)
+    {
+        $client = new \GuzzleHttp\Client();
+        $hash = hash('ripemd160', json_encode($request->all()));
+        $res = $client->request('GET', 'https://poe.ninja/api/data/CurrencyOverview', [
+            'query' => $request->all()
+        ]);
+        $data = $res->getBody()->getContents();
+
+        return $data;
+    }
 }

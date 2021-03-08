@@ -23,6 +23,8 @@ import vuetify from './vuetify';
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('current-league-component', require('./components/CurrentLeagueComponent.vue').default);
+Vue.component('currency-dashboard-component', require('./components/CurrencyDashboardComponent.vue').default);
+
 Vue.component('ladders-list-view-component', require('./components/LaddersListViewComponent.vue').default);
 Vue.component('character-info-component', require('./components/CharacterInfoComponent.vue').default);
 
