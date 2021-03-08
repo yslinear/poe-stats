@@ -17,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('v1')->group(function () {
+    Route::prefix('poe')->group(function () {
+        Route::get('leagues', [App\Http\Controllers\api\PoeController::class, 'leagues']);
+        Route::get('ladders/{id}', [App\Http\Controllers\api\PoeController::class, 'ladders']);
+        Route::get('character', [App\Http\Controllers\api\PoeController::class, 'character']);
+        Route::get('currencyOverview', [App\Http\Controllers\api\PoeController::class, 'currencyOverview']);
+    });
+});
