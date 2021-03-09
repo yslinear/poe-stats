@@ -1,7 +1,7 @@
 <template>
     <v-container>
-        <div class="row">
-            <div class="col-12">
+        <v-row>
+            <v-col cols="12">
                 <v-select
                     v-model="select.league"
                     :items="leagues"
@@ -12,14 +12,11 @@
                     :loading="isLoading"
                     :disabled="isLoading"
                     single-line
+                    dense
                 ></v-select>
-            </div>
-            <div class="col-12">
-                <v-skeleton-loader
-                    type="table-heading, table-row-divider@20"
-                    v-if="isLoading"
-                ></v-skeleton-loader>
-                <v-simple-table v-else>
+            </v-col>
+            <v-col cols="12">
+                <v-simple-table>
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -120,17 +117,18 @@
                         </tr>
                     </tbody>
                 </v-simple-table>
-            </div>
-            <div class="col-12" v-show="0 < paginationLength">
+            </v-col>
+            <v-col cols="12" v-show="0 < paginationLength">
                 <v-pagination
                     class="my-4"
                     v-model="select.page"
                     :length="paginationLength"
                     :loading="isLoading"
                     :disabled="isLoading"
+                    total-visible="16"
                 ></v-pagination>
-            </div>
-        </div>
+            </v-col>
+        </v-row>
     </v-container>
 </template>
 
