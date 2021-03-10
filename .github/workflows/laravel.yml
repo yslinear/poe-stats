@@ -79,6 +79,8 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: poe-stats
         environment_name: Poestats-env
-        version_label: ${{ github.SHA }}
+        use_existing_version_if_available: true
+        version_label: 1.0.0
+        version_description: ${{ github.SHA }}
         region: ap-northeast-1
         deployment_package: deploy.zip
