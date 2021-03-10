@@ -72,8 +72,11 @@ jobs:
       - name: Init Elastic Beanstalk cli
         uses: hmanzur/actions-aws-eb@v1.0.0
         with:
-          command: 'eb init && deploy Poestats-env'
+          command: ''
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: "ap-northeast-1"
+        run: |
+          eb init
+          deploy Poestats-env
