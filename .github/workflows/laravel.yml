@@ -31,7 +31,7 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
 
-  deploy:
+  deploy-lionfree:
     needs: laravel-tests
 
     runs-on: ubuntu-latest
@@ -59,3 +59,21 @@ jobs:
           - phpunit.xml
           - composer*.json
           - package*.json
+
+  deploy-aws-elastic-beanstalk:
+    needs: laravel-tests
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - name: Init Elastic Beanstalk cli
+        uses: hmanzur/actions-aws-eb@v1.0.0
+        with:
+          command: 'deploy Poestats-env'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: "ap-northeast-1"
