@@ -43,7 +43,7 @@
                                 <a class="nav-link" href="{{ route('ladders') }}">{{ __('Ladders') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('currency') }}">{{ __('currency') }}</a>
+                                <a class="nav-link" href="{{ route('currency') }}">{{ __('Currency') }}</a>
                             </li>
                         </ul>
 
