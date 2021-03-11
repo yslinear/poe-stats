@@ -82,4 +82,3 @@ jobs:
         use_existing_version_if_available: true
         version_label: 1.0.0
         region: ap-northeast-1
-        deployment_package: ${{ github.SHA }}.zip
