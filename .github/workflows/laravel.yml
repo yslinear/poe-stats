@@ -64,31 +64,31 @@ jobs:
     # needs: laravel-tests
 
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.15.5]
+    # strategy:
+    #   matrix:
+    #     node-version: [14.15.5]
 
     steps:
     - uses: actions/checkout@v1
 
-    - name: Cache node modules
-      uses: actions/cache@v1
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-#
-    - name: Node ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+#     - name: Cache node modules
+#       uses: actions/cache@v1
+#       with:
+#         path: ~/.npm
+#         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+#         restore-keys: |
+#           ${{ runner.os }}-node-
+# #
+#     - name: Node ${{ matrix.node-version }}
+#       uses: actions/setup-node@v1
+#       with:
+#         node-version: ${{ matrix.node-version }}
 
-    - name: Installing NPM
-      run: npm install
+    # - name: Installing NPM
+    #   run: npm install
 
-    - name: Building application
-      run: npm run production
+    # - name: Building application
+    #   run: npm run production
 
     - name: Generate deployment package
       run: zip -r deploy.zip * -x "**.git**" "**node_modules**"
