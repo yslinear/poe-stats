@@ -5,7 +5,7 @@
                 Made with&nbsp;
                 <p class="line-through m-0">love</p>
                 &nbsp;a keyboard by yslinear.&nbsp;
-                <a class="no-underline" href="https://github.com/yslinear/">
+                <a class="no-underline" href="https://github.com/yslinear/poe-stats">
                     <v-icon
                         dense
                         class="text-black"
