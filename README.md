@@ -1,6 +1,8 @@
 # POE-stats
 
-[![Laravel](https://github.com/yslinear/poe-stats/actions/workflows/laravel.yml/badge.svg)](https://github.com/yslinear/poe-stats/actions/workflows/laravel.yml)
+[![](https://github.com/yslinear/poe-stats/actions/workflows/laravel.yml/badge.svg)](https://github.com/yslinear/poe-stats/actions/workflows/laravel.yml)
+[![](https://img.shields.io/badge/Deploy-GitHub%20Actions-232F3E?logo=github-actions&logoColor=white)](https://github.com/yslinear/poe-stats/blob/master/.github/workflows/laravel.yml)
+[![](https://img.shields.io/badge/Host-AWS%20Elastic%20Beanstalk-232F3E?logo=amazon-aws&logoColor=white)](https://aws.amazon.com/elasticbeanstalk/)
 
 ## Tech stack
 
