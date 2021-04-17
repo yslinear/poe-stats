@@ -160,7 +160,8 @@ export default {
     },
     computed: {
         paginationLength: function () {
-            if (undefined != this.ladders.total) return this.ladders.total / 20;
+            if (undefined != this.ladders.total)
+                return Math.ceil(this.ladders.total / 20);
             return 0;
         },
     },

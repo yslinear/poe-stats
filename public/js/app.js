@@ -2492,7 +2492,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     paginationLength: function paginationLength() {
-      if (undefined != this.ladders.total) return this.ladders.total / 20;
+      if (undefined != this.ladders.total) return Math.ceil(this.ladders.total / 20);
       return 0;
     }
   },
@@ -40416,7 +40416,7 @@ var render = function() {
             "a",
             {
               staticClass: "no-underline",
-              attrs: { href: "https://github.com/yslinear/" }
+              attrs: { href: "https://github.com/yslinear/poe-stats" }
             },
             [
               _c("v-icon", {
