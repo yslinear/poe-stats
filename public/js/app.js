@@ -2456,15 +2456,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -40627,90 +40618,68 @@ var render = function() {
                       _c("td", [_vm._v(_vm._s(ladder.character.level))]),
                       _vm._v(" "),
                       _c("td", [
-                        _c(
-                          "div",
-                          { staticClass: "flex" },
-                          [
-                            _c(
-                              "v-icon",
-                              {
-                                class: [
-                                  ladder.online
-                                    ? "text-green-500"
-                                    : "text-red-500"
+                        _c("div", { staticClass: "flex" }, [
+                          _c("div", [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(ladder.account.name) +
+                                "\n                                "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          ladder.public
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass: "ml-2 no-underline",
+                                  attrs: {
+                                    href:
+                                      "https://www.pathofexile.com/account/view-profile/" +
+                                      ladder.account.name +
+                                      "/characters",
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      staticClass: "text-yellow-800",
+                                      attrs: { dense: "" }
+                                    },
+                                    [_vm._v("mdi-card-account-details-outline")]
+                                  )
                                 ],
-                                attrs: { dense: "" }
-                              },
-                              [_vm._v("mdi-access-point")]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "ml-2" }, [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(ladder.account.name) +
-                                  "\n                                "
+                                1
                               )
-                            ]),
-                            _vm._v(" "),
-                            ladder.public
-                              ? _c(
-                                  "a",
-                                  {
-                                    staticClass: "ml-2 no-underline",
-                                    attrs: {
-                                      href:
-                                        "https://www.pathofexile.com/account/view-profile/" +
-                                        ladder.account.name +
-                                        "/characters",
-                                      target: "_blank"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "v-icon",
-                                      {
-                                        staticClass: "text-yellow-800",
-                                        attrs: { dense: "" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "mdi-card-account-details-outline"
-                                        )
-                                      ]
-                                    )
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            _vm._v(" "),
-                            ladder.account.twitch
-                              ? _c(
-                                  "a",
-                                  {
-                                    staticClass: "ml-2 no-underline",
-                                    attrs: {
-                                      href:
-                                        "https://www.twitch.tv/" +
-                                        ladder.account.twitch.name,
-                                      target: "_blank"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "v-icon",
-                                      {
-                                        staticClass: "text-purple-700",
-                                        attrs: { dense: "" }
-                                      },
-                                      [_vm._v("mdi-twitch")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              : _vm._e()
-                          ],
-                          1
-                        )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ladder.account.twitch
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass: "ml-2 no-underline",
+                                  attrs: {
+                                    href:
+                                      "https://www.twitch.tv/" +
+                                      ladder.account.twitch.name,
+                                    target: "_blank"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      staticClass: "text-purple-700",
+                                      attrs: { dense: "" }
+                                    },
+                                    [_vm._v("mdi-twitch")]
+                                  )
+                                ],
+                                1
+                              )
+                            : _vm._e()
+                        ])
                       ])
                     ])
                   }),

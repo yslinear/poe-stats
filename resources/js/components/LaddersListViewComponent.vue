@@ -80,16 +80,7 @@
                             <td>{{ ladder.character.level }}</td>
                             <td>
                                 <div class="flex">
-                                    <v-icon
-                                        dense
-                                        :class="[
-                                            ladder.online
-                                                ? 'text-green-500'
-                                                : 'text-red-500',
-                                        ]"
-                                        >mdi-access-point</v-icon
-                                    >
-                                    <div class="ml-2">
+                                    <div>
                                         {{ ladder.account.name }}
                                     </div>
                                     <a
