@@ -31,35 +31,6 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
 
-  deploy-lionfree:
-    needs: laravel-tests
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Get latest code
-      uses: actions/checkout@v2
-
-    - name: Install Node.js dependencies and minifies JS/CSS files
-      run: npm install && npm run production
-
-    - name: Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        server: ${{ secrets.SERVER }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        server-dir: ${{ secrets.SERVER_DIR }}
-        exclude: .git*
-          - .git*/**
-          -  **/.git*/**
-          - node_modules/**
-          - node_modules/**/*
-          - README.md
-          - phpunit.xml
-          - composer*.json
-          - package*.json
-
   deploy-aws-elastic-beanstalk:
       needs: laravel-tests
 
